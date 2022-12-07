@@ -1,13 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPSUS-MAMA</title>
-</head>
-<body>
-    Projeto CNPQ
-    <form action="" method="post"></form>
-</body>
-</html>
+{% extends 'base.html'%}
+
+{%block conteudo%}
+<form>
+    <label for="nomePaciente">Nome do paciente</label>
+    <input type="text" name="nomePaciente" id="nomepaciente">
+    <br>
+    <label for="mutacao">Teste genético apresenta mutação do tipo: </label>
+    <select name="mutacao" id="mutacao">
+        <option value="1">BRCA1</option>
+        <option value="2">BRCA2</option>
+        <option value="3">TP53</option>
+        <option value="4">CDH1</option>
+        <option value="5">STK11</option>
+        <option value="6">PTEN</option>
+        <option value="7">PALB2</option>
+        <option value="8">VUS</option>
+    </select>
+    <br>
+    <label for="opcao_bilateral">Historico Pessoal de cancer de mama opcao_bilateral</label>
+    <select name="opcao_bilateral" id="opcao_bilateral">
+        <option>SIM</option>
+        <option>NÃO</option>
+    </select>
+    <br>
+    <label for="opcao_ovario">Historico Pessoal de cancer de ovario</label>
+    <select name="opcao_ovario" id="opcao_ovario">
+        <option>SIM</option>
+        <option>NÃO</option>
+    </select>
+    <br>
+    <label for="cancer_mama"> Teve câncer de mama?</label>
+    <select name="cancer_mama" id="cancer_mama">
+        <option>SIM</option>
+        <option>NÃO</option>
+    </select>
+    <br>
+
+    <label for="cancer_diagnostio">Idade do diagnostico de câncer de mama:</label>
+    <select name="cancer_diagnostio" id="cancer_diagnostio">
+        <option value="1">Maior que 60</option>
+        <option value="2">Maior que 55,menor ou igual a 60 anos</option>
+        <option value="3">Maior que 45,menor ou igual a 55</option>
+        <option value="4">Maior que 35,menor ou igual a 45</option>
+        <option value="5">Maior que 30,menor ou igual a 35</option>
+        <option value="6">Menor ou igual a 30</option>
+    </select>
+
+    <br>
+    <label for="cancer_histologico">Se câncer de mama, qual tipo histologico?</label>
+    <select name="cancer_histologico" id="cancer_histologico">
+       <option value="1">Carcinoma ductal insitu</option>
+       <option value="2">Carcinoma tipo não especial</option>
+       <option value="3">Lobural</option>
+       <option value="4">Medular</option>
+       <option value="5">Metaplatico</option>
+       <option value="6">Mucinoso</option>
+    </select>
+    <br>
+
+    <label for="cancer_histologico">Tipo molecular de cancer de mama:</label>
+    <select name="cancer_histologico" id="cancer_histologico">
+        <option>SIM</option>
+        <option>NÃO</option>
+    </select>
+    <br>
+
+    <label for="cancer_histologico">Se tem cancer, qual o tamanho do tumor</label>
+    <select name="cancer_histologico" id="cancer_histologico">
+        <option>SIM</option>
+        <option>NÃO</option>
+    </select>
+    <br>
+</form> 
+{%endblock%}
