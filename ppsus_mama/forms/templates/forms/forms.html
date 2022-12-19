@@ -3,11 +3,18 @@
 {%block formulario%}
 <form class="forms-input">
     <div class="caixa">
-        <label class="input_name"for="nomePaciente">Nome do paciente</label>
+        <label class="input_name"for="nomePaciente">Nome do paciente:</label>
         <input type="text" name="nomePaciente" id="nomepaciente">
     </div>
     
     <br>
+    <div class="caixa">
+        <label class="input_name"for="sobrenome">Sobrenome:</label>
+        <input type="text" name="sobrenome" id="sobrenome">
+    </div>
+    
+    <br>
+
 
     <div class="caixa">
         <label for="mutacao">Teste genético apresenta mutação do tipo: </label>
@@ -24,7 +31,7 @@
     </div>
     
     <div class="caixa">
-        <label for="opcao_bilateral">Historico Pessoal de cancer de mama bilateral</label>
+        <label for="opcao_bilateral">Historico Pessoal de cancer de mama bilateral:</label>
         <select name="opcao_bilateral" id="opcao_bilateral">
             <option value="1">SIM</option>
             <option value="2">NÃO</option>
@@ -32,7 +39,7 @@
     </div>
     
     <div class="caixa">
-        <label for="opcao_ovario">Historico Pessoal de cancer de ovario</label>
+        <label for="opcao_ovario">Historico Pessoal de cancer de ovario:</label>
         <select name="opcao_ovario" id="opcao_ovario">
             <option value="1">SIM</option>
             <option value="2">NÃO</option>
@@ -79,7 +86,7 @@
     </div>
 
     <div class="caixa">
-        <label for="cancer_histologico">Se tem cancer, qual o tamanho do tumor</label>
+        <label for="cancer_histologico">Se tem cancer, qual o tamanho do tumor:</label>
         <select name="cancer_histologico" id="tipo_molecular">
             <option value="1">SIM</option>
             <option value="2">NÃO</option>
@@ -87,33 +94,33 @@
     </div>
 
     <div class="caixa">
-        <label for="cancer_histologico">Quantidade parentes de primeiro grau com cancer de mama</label>
+        <label for="cancer_histologico">Quantidade parentes de primeiro grau com cancer de mama:</label>
         <select name="cancer_histologico" id="tipo_molecular">
             <option value="1">Um</option>
             <option value="2">Dois</option>
-            <option value="2">Três ou Mais</option>
-            <option value="2">Desconhece</option>
+            <option value="3">Três ou Mais</option>
+            <option value="4">Desconhece</option>
         </select>
     </div>
 
 
     <div class="caixa">
-        <label for="cancer_histologico">Quantidade parentes de primeiro grau com cancer de mama < 50 anos</label>
+        <label for="cancer_histologico">Quantidade parentes de primeiro grau com cancer de mama < 50 anos:</label>
         <select name="cancer_histologico" id="tipo_molecular">
             <option value="1">Um</option>
             <option value="2">Dois</option>
-            <option value="2">Três ou Mais</option>
-            <option value="2">Desconhece</option>
+            <option value="3">Três ou Mais</option>
+            <option value="4">Desconhece</option>
         </select>
     </div>
 
     <div class="caixa">
-        <label for="cancer_histologico">Parentes de segundo grau ou mais distante com cancer de mama ou ovario < 50 anos</label>
+        <label for="cancer_histologico">Parentes de segundo grau ou mais distante com cancer de mama ou ovario < 50 anos:</label>
         <select name="cancer_histologico" id="tipo_molecular">
             <option value="1">Um</option>
             <option value="2">Dois</option>
-            <option value="2">Três ou Mais</option>
-            <option value="2">Desconhece</option>
+            <option value="3">Três ou Mais</option>
+            <option value="4">Desconhece</option>
         </select>
     </div>
 

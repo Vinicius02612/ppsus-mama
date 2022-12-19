@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'forms.apps.FormsConfig',
     'results.apps.ResultsConfig',
     'login.apps.LoginConfig',
-    'footer.apps.FooterConfig',
+
 ]
 
 MIDDLEWARE = [

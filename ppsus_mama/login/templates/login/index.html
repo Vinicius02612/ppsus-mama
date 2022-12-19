@@ -1,8 +1,8 @@
 {% extends 'base.html'%}
 {%block login%}
-
 <div class="login">
-    <div class="form" action="" method="post">
+    <form class="form" action="" method="post">
+        <h2>LOGIN</h2>
         <div class="user">
             <label for="usuario">Usuario</label><br>
             <input type="text" name="usuario" id="usuario">
@@ -14,9 +14,9 @@
         </div>
         <br>
         <div class="button">
-            <input  class= "send"type="button" value="Entrar">
+            <input  class= "send" type="submit" value="Entrar">
         </div>
-    </div>
+    </form>
 </div>
 
 {%endblock%}
