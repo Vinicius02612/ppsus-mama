@@ -6,15 +6,18 @@
         <div class="user">
             <label for="usuario">Usuario</label><br>
             <input type="text" name="usuario" id="usuario">
+            <input type="hidden" name="usuario" id="validaUser" arial-hiden="true">
         </div>
         <br>
         <div class="password">
             <label for="usuario">Senha</label><br>
             <input type="password" name="senha" id="senha">
+            <input type="hidden" name="senha" id="validaPassWord" arial-hiden="true">
         </div>
         <br>
+        <a class="forgot" href="#">Esqueceu a senha?</a>
         <div class="button">
-            <input  class= "send" type="submit" value="Entrar">
+            <input  class= "send" type="submit" value="Entrar" onclick="validateLogin">
         </div>
     </form>
 </div>
