@@ -5,22 +5,47 @@
         <h2>LOGIN</h2>
         <div class="user">
             <label for="usuario">Usuario</label><br>
-            <input type="text" name="usuario" id="usuario">
-            <input type="hidden" name="usuario" id="validaUser" arial-hiden="true">
+            <input type="text" name="usuario" required id="usuario">
+            <span id="notificationUser"></span>
         </div>
         <br>
         <div class="password">
             <label for="usuario">Senha</label><br>
-            <input type="password" name="senha" id="senha">
-            <input type="hidden" name="senha" id="validaPassWord" arial-hiden="true">
+            <input type="password" name="senha" required id="senha">
+            <span id="notificationPass"></span>
         </div>
         <br>
         <a class="forgot" href="#">Esqueceu a senha?</a>
         <div class="button">
-            <input  class= "send" type="submit" value="Entrar" onclick="validateLogin">
+            <input  class= "send" type="submit" value="Entrar" onclick="validaLogin()">
         </div>
     </form>
 </div>
+<script>
+    function validaLogin(){
+        var User = document.getElementById("#validaUser")
+        var Password =  document.getElementById("#validaPassWord")
+        var validaUser  = document.getElementById('#notificationUser')
+        var validaPass = document.getElementById('#notificationPass')
+        var send = document.getElementsByClassName('.send')
+    
+        console.log(User)
+        console.log(Password)
+
+        var inputError = false
+
+        if(User == null && Password == null){
+            inputError = true
+            alert("usuario e senha tem que ser preenchidos")
+
+        }
+     
+    }
+
+</script>
+
+<!-- const d = document.getElementById("d");
+dump(d.innerHTML); -->
 
 {%endblock%}
 

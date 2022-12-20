@@ -163,10 +163,16 @@ select{
 
 
     height: 140px;
-    background-color: #d0425c;
-
+/*     background-color: #d0425c;
+ */
     padding: 20px;
     color: #fff;
 
     position: relative;
+}
+
+.table_result{
+    
+    
+    background-color: #d0425c;
 }
