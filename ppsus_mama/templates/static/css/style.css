@@ -63,9 +63,8 @@ html,body{
     width: 160rem;
     background-color: rgb(250, 247, 247);
     padding:  100px;
-    font-size: 25px;
+    font-size: 20px;
     margin: 100px auto;
-
     border: 1px solid #FE3055 ;
 }
 
@@ -91,6 +90,20 @@ label{
 
 .button{
     margin-top:50px ;
+    
+}
+
+.area-info-forms{
+    margin: 100px 100px 100px;    
+}
+
+.info-forms{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    margin: auto 200px 200px 200px;
 }
 
 input{
@@ -156,12 +169,40 @@ select{
     
 }
 
+.area-info{
+    margin: 100px 100px 100px;
+}
+
+.info{
+    font-size: 20px;
+    margin: auto 50px 5;
+}
+
+.table_result{
+    height: 500px;
+    margin:  100px 100px 100px;
+    border: 1px solid #d0425c;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    font-size: 18px;
+}
+
+.table{
+    margin-top: 100px;
+
+}
+
+
+
+.table > button{
+    margin-top: 200px;
+}
+
 .rodape{
     margin-top: 40rem;
     display: flex;
-
-
-
     height: 140px;
 /*     background-color: #d0425c;
  */
@@ -171,8 +212,3 @@ select{
     position: relative;
 }
 
-.table_result{
-    
-    
-    background-color: #d0425c;
-}
