@@ -1,4 +1,4 @@
-./venv/*
+./venv
 
 ./ppsus_mama/froms/__pycache__/
 ./ppsus_mama/login/__pycache__/
