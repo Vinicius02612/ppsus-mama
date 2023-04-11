@@ -1,0 +1,19 @@
+.navbar{
+    background-color:#FE3055 ;
+   
+}
+.navbar .container > a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.footer{
+    margin-top: 4vh;
+    height: 50px;
+    background-color: #ffe8ec;
+
+    padding: 20px;
+
+    
+
+    border-top: #FE3055;
+}
