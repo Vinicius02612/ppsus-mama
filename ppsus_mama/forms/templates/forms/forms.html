@@ -34,13 +34,13 @@
         <div class="form-row">
             <div class="col-6">
                 <label class="input_name"for="nomePaciente">Nome do paciente:</label>
-                <input type="text" name="nomePaciente" placeholder="Nome do paciente" class="form-control"required  id="nomepaciente">
+                <input type="text" name="nomePaciente" placeholder="Nome do paciente" value="{{request.POST.nomePaciente}} "class="form-control"  id="nomepaciente">
             </div>
             
             <br>
             <div class="caixa col-6">
                 <label class="input_name"for="sobrenome">Sobrenome:</label>
-                <input type="text" name="sobrenome" placeholder="Sobrenome" class="form-control required " id="sobrenome">
+                <input type="text" name="sobrenome" placeholder="Sobrenome" value="{{request.POST.Sobrenome}} "class="form-control" id="sobrenome">
             </div>
         </div>
         <br>
@@ -49,12 +49,12 @@
        <div class="form-row">
             <div class="caixa col-md-10">
                 <label class="input_clinica"for="sobrenome">Nome da Clínica que realizou o exame:</label>
-                <input type="text" class="form-control" name="nomeClinica" value="{{request.POST.nome}}"  placeholder="Nome da clinica">
+                <input type="text" class="form-control" name="nomeClinica" value="{{request.POST.nomeClinica}}"  placeholder="Nome da clinica">
  
             </div>
             <div class="caixa col-md-2">
                 <label class="input_idade"for="idade_paciente">Idade do Paciente:</label>
-                <input type="number" class="form-control" required name="idadePaciente" id="IdadePaciente">
+                <input type="number" class="form-control" name="idadePaciente" value="{{request.POST.idadePaciente}}"id="IdadePaciente">
             </div>
             
             <br>
@@ -66,7 +66,7 @@
     
         <div class=" form-row ">
             <label for="mutacao" class="col-10">1 - Teste genético apresenta mutação do tipo: </label>
-            <select class="form-select  form-control col-md-2" name="mutacao" required id="mutacao">
+            <select class="form-select  form-control col-md-2" name="mutacao"value="{{request.POST.mutacao}}" id="mutacao">
                 <option value=" "></option>
                 <option value="1">BRCA1</option>
                 <option value="2">BRCA2</option>
@@ -83,7 +83,7 @@
         <br>
         <div class="form-row">
             <label for="opcao_bilateral" class="col-10">2 - Historico Pessoal de cancer de mama bilateral:</label>
-            <select name="opcao_bilateral" class=" form-control col-2" required id="opcao_bilateral">
+            <select name="opcao_bilateral" class=" form-control col-2" value="{{request.POST.opcao_bilateral}}" id="opcao_bilateral">
                 <option value=" "></option>
                 <option value="1">SIM</option>
                 <option value="2">NÃO</option>
@@ -93,7 +93,7 @@
         <br>
         <div class="form-row" >
             <label for="opcao_ovario" class="col-10">3 - Tem historico Pessoal de cançer de ovario?</label>
-            <select name="opcao_ovario" class=" form-control col-2" required id="opcao_ovario">
+            <select name="opcao_ovario" class=" form-control col-2"value="{{request.POST.opcao_ovario}}" id="opcao_ovario">
                 <option value=" "></option>
                 <option value="1">SIM</option>
                 <option value="2">NÃO</option>
@@ -104,7 +104,7 @@
         <br>
         <div class="form-row">
             <label for="cancer_mama" class="col-10">4 - Teve câncer de mama?</label>
-            <select name="cancer_mama"  class=" form-control col-2" required id="cancer_mama">
+            <select name="cancer_mama"  class=" form-control col-2" value="{{request.POST.cancer_mama}}" id="cancer_mama">
                 <option value=" "></option>
                 <option value="1">SIM</option>
                 <option value="2">NÃO</option>
@@ -115,7 +115,7 @@
         <br>
         <div class="form-row">
             <label for="cancer_diagnostio" class="col-10">5 - Faixa de idade do diagnostico de câncer de mama:</label>
-            <select name="cancer_diagnostio"class=" form-control col-2" required id="cancer_diagnostio">
+            <select name="cancer_diagnostio"class=" form-control col-2" value="{{request.POST.cancer_diagnostio}}" id="cancer_diagnostio">
                 <option value=" "></option>
                 <option value="1"> Maior que 60 anos</option>
                 <option value="2"> Entre 55  e 60 anos</option>
@@ -130,7 +130,7 @@
         <br>
         <div class="form-row">
             <label for="cancer_histologico" class="col-10">6 - Se tem câncer de mama, qual tipo histologico?</label>
-            <select name="cancer_histologico" class=" form-control col-2" required id="cancer_histologico">
+            <select name="cancer_histologico" class=" form-control col-2" value="{{request.POST.cancer_histologico}}" id="cancer_histologico">
                 <option value=" "></option>
                <option value="1">Carcinoma ductal insitu</option>
                <option value="2">Carcinoma não especial</option>
@@ -145,7 +145,7 @@
         <br>
         <div class="form-row ">
             <label for="tipo_molecular" class="col-10">7 - Tipo molecular de câncer de mama:</label>
-            <select name="tipo_molecular" class=" form-control col-2" required id="tipo_molecular">
+            <select name="tipo_molecular" class=" form-control col-2" value="{{request.POST.tipo_molecular}}" id="tipo_molecular">
                 <option value=" "></option>
                 <option value="1">Lumial</option>
                 <option value="2">Lumial HEr2</option>
@@ -158,7 +158,7 @@
         <br>
         <div class="form-row">
             <label for="tam_cancer" class="col-10">8 - Se tem câncer, qual o tamanho do tumor:</label>
-            <select name="tam_cancer" class=" form-control col-2" required id="tam_cancer">
+            <select name="tam_cancer" class=" form-control col-2" value="{{request.POST.tam_cancer}}"id="tam_cancer">
                 <option value=" "></option>
                 <option value="1">Insitu</option>
                 <option value="2">T1</option>
@@ -172,7 +172,7 @@
         <br>
         <div class="form-row">
             <label for="qtd_parent_1" class="col-10">9 - Quantidade parentes de primeiro grau com câncer de mama:</label>
-            <select name="qtd_parent_1" class=" form-control col-2" required id="qtd_parent_1">
+            <select name="qtd_parent_1" class=" form-control col-2" value="{{request.POST.qtd_parent_1}}" id="qtd_parent_1">
                 <option value=" "></option>
                 <option value="1">Um</option>
                 <option value="2">Dois</option>
@@ -186,7 +186,7 @@
         <br>
         <div class="form-row">
             <label for="qtd_parent_2" class="col-10">10 - Quantidade parentes de primeiro grau com câncer de mama < 50 anos:</label>
-            <select name="qtd_parent_2" class=" form-control col-2" required id="qtd_parent_2">
+            <select name="qtd_parent_2" class=" form-control col-2" value="{{request.POST.qtd_parent_2}}" id="qtd_parent_2">
                 <option value=" "></option>
                 <option value="1">Um</option>
                 <option value="2">Dois</option>
@@ -199,7 +199,7 @@
         <br>
         <div class="form-row">
             <label for="parent_2grua" class="col-10">11 - Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:</label>
-            <select name="parent_2grua"class=" form-control col-2" required id="parente_segundo">
+            <select name="parent_2grua"class=" form-control col-2" value="{{request.POST.parent_2grua}}" id="parente_segundo">
                 <option value=" "></option>
                 <option value="1">Um</option>
                 <option value="2">Dois</option>
@@ -211,8 +211,8 @@
     
         <br>
         <div class="form-row">
-            <label for="parent_2grua" class="col-10">12 - Parentes de primeiro grau com :</label>
-            <select name="parent_2grua" class=" form-control col-2" required id="parente_segundo">
+            <label for="parent_1grua" class="col-10">12 - Parentes de primeiro grau com :</label>
+            <select name="parent_1grua" class=" form-control col-2"  value="{{request.POST.parent_1grua}}"id="parente_segundo">
                 <option value=" "></option>
                 <option value="1">Câncer de ovario</option>
                 <option value="2">Câncer de mama masculino</option>
@@ -227,7 +227,7 @@
         <br>
         <div class="form-row">
             <label for="asc_judia" class="col-10">13 - Ascendencia Judia Ashkenazi:</label>
-            <select name="asc_judia" class=" form-control col-2" required id="asc_judia">
+            <select name="asc_judia" class=" form-control col-2" value="{{request.POST.asc_judia}}" id="asc_judia">
                 <option value=" "></option>
                 <option value="1">Sim</option>
                 <option value="2">não</option>

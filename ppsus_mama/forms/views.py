@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.core.validators import validate_email
 
 # Create your views here.
@@ -27,26 +28,25 @@ def formulario(request):
     qtd_parent_2 =  request.POST.get('qtd_parent_2')
 
     parent_seg_grau = request.POST.get('parent_2grau')
-    asc_judia = request.POST.get('asc_judia')
+    parent_pri_grau = request.POST.get('parent_2grau')
 
-    if not nomePaciente or not sobreNome or not idadePaciente or not nomeClinica or not mutacaoGenetica or not opc_bilateral \
-    or not opc_ovario or not cancer_mama or not cancer_diagnostico or not cancer_histoogico or not tipo_molecular or not  tam_cancer \
-    or not qtd_parent_1 or not qtd_parent_2 or not parent_seg_grau or not asc_judia:
-        messages.error(request, 'Os campos devem ser todos preenchidos!')
+    asc_judia = request.POST.get('asc_judia')
+    
+    idade = int(idadePaciente)
+    if idade < 18:
+        messages.error(request, 'O paciente deve ser maior de 18 anos!')
+        return render(request, 'forms/forms.html')
+    
+    if not nomePaciente or not sobreNome or not idadePaciente or not nomeClinica or not mutacaoGenetica or not opc_bilateral  or not opc_ovario or not cancer_mama or not cancer_diagnostico or not cancer_histoogico or not tipo_molecular or not  tam_cancer  or qtd_parent_1 or not qtd_parent_2 or not parent_seg_grau or not parent_pri_grau or not asc_judia:
+        messages.error(request, 'Todos campos devem ser todos preenchidos!')
         return render(request, 'forms/forms.html')
     else:
         messages.success(request, 'Dados enviados...')
-        return redirect('resus')
-
-        
-
-
-
-
-
-
+        return redirect('results')
     
 
+    
+        
 
 def results(request):
     return render(request, 'forms/results.html')

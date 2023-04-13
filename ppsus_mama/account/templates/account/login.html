@@ -12,7 +12,7 @@
         {% endfor %}
     {% endif %}
     {% csrf_token %}
-    <br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
     <div class="container">
         <div class="row">
           <div class="col-md-6 offset-md-3">
@@ -32,7 +32,10 @@
               </div>
               <br>
               <br>
-              <button type="submit" class="btn btn-primary">Entrar</button>
+              <div class="btn-login row ">
+                <button type="submit" class="btn btn-primary col-3 ">Entrar</button>
+                <a href="{% url 'cadastro' %}" type="submit" class= "p-2 ml-5">Não tenho conta</a>
+              </div>
             </form>
           </div>
         </div>

@@ -1,15 +1,29 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Pergunta, Cliente
+from .models import Form,Paciente
 
 
-class PerguntasAdmin(admin.ModelAdmin):
+                    
+class Perguntas(admin.ModelAdmin):
+    list_display = [
+        'dado_paciente',
+        'mutacaoGenetica',
+        'opc_bilateral',
+        'opc_ovario',
+        'cancer_mama',
+        'cancer_diagnostico',
+        'cancer_histologico',
+        'tipo_molecular',
+        'tam_cancer',
+        'qtd_parent_1',
+        'qtd_parent_2',
+        'parent_seg_grau',
+        'parent_pri_grau',
+        'asc_judia'
+    ]
 
 
+admin.site.register(Paciente)
 
-    list_display = ('id', 'titulo', 'peso','cliente')
-
-
-admin.site.register(Cliente)
-admin.site.register(Pergunta, PerguntasAdmin)
+admin.site.register(Form, Perguntas)
