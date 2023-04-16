@@ -1,11 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.validators import validate_email
 
+
+import json
+
+from .models import Form
+
 # Create your views here.
 
-def formulario(request):
+def forms(request):
     if request.method != 'POST':
         return render(request, 'forms/forms.html')
 
@@ -28,25 +33,57 @@ def formulario(request):
     qtd_parent_2 =  request.POST.get('qtd_parent_2')
 
     parent_seg_grau = request.POST.get('parent_2grau')
-    parent_pri_grau = request.POST.get('parent_2grau')
+    parent_pri_grau = request.POST.get('parent_1grau')
 
     asc_judia = request.POST.get('asc_judia')
     
-    idade = int(idadePaciente)
-    if idade < 18:
-        messages.error(request, 'O paciente deve ser maior de 18 anos!')
-        return render(request, 'forms/forms.html')
+ 
     
-    if not nomePaciente or not sobreNome or not idadePaciente or not nomeClinica or not mutacaoGenetica or not opc_bilateral  or not opc_ovario or not cancer_mama or not cancer_diagnostico or not cancer_histoogico or not tipo_molecular or not  tam_cancer  or qtd_parent_1 or not qtd_parent_2 or not parent_seg_grau or not parent_pri_grau or not asc_judia:
-        messages.error(request, 'Todos campos devem ser todos preenchidos!')
-        return render(request, 'forms/forms.html')
-    else:
-        messages.success(request, 'Dados enviados...')
-        return redirect('results')
+    resForms = Form.objects.create(
+
+            nomePaciente = nomePaciente,
+            sobrenome= sobreNome,
+            nomeclinica= nomeClinica,
+            idadepaciente=idadePaciente,
+            mutacaoGenetica = mutacaoGenetica,
+            opc_bilateral =opc_bilateral,
+            opc_ovario = opc_ovario,
+            cancer_mama = cancer_mama,
+            cancer_diagnostico = cancer_diagnostico,
+            cancer_histologico = cancer_histoogico,
+            tipo_molecular =tipo_molecular,
+            tam_cancer = tam_cancer,
+            qtd_parent_1 = qtd_parent_1,
+            qtd_parent_2 = qtd_parent_2,
+            parent_seg_grau = parent_seg_grau,
+            parent_pri_grau = parent_pri_grau,
+            asc_judia = asc_judia
+
+        )
+    #salvando dados em um arquivo json
+
+    messages.success(request, 'Dados enviados...')       
+    return render(request, 'forms/report.html',{
+        'resPaciente':resP,
+        'resForms':resForms
+    })    
     
 
     
         
+
+    
+def report(request, id_report):
+
+    responsePaciente = Paciente.objects.get(Paciente, id = id_report)
+    responseForms = Form.objects.get(Form, id =  id_report)
+
+
+    return render(request, 'forms/report.html', {
+        'reportPaciente':responsePaciente,
+        'reportForm':responseForms
+    })
+
 
 def results(request):
     return render(request, 'forms/results.html')

@@ -6,14 +6,3 @@
     text-decoration: none;
     color: aliceblue;
 }
-
-
-.footer{
-    position: fixed;
-    margin-top: 4vh;
-    height: 50px;
-    background-color: #ffe8ec;
-
-    padding: 20px;
-    border-top: #FE3055;
-}

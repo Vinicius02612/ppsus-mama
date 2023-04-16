@@ -21,7 +21,7 @@
 
 
 
-<form method="POST" name="mainForm"  action="{% url 'formulario' %}">
+<form method="POST" name="mainForm"  action="{% url 'forms' %}">
     
     <div class="form">
         {% if messages %}
@@ -34,13 +34,13 @@
         <div class="form-row">
             <div class="col-6">
                 <label class="input_name"for="nomePaciente">Nome do paciente:</label>
-                <input type="text" name="nomePaciente" placeholder="Nome do paciente" value="{{request.POST.nomePaciente}} "class="form-control"  id="nomepaciente">
+                <input type="text" name="nomePaciente" value="{{request.POST.nomePaciente}} "class="form-control"  id="nomepaciente" placeholder="Nome do paciente" >
             </div>
             
             <br>
             <div class="caixa col-6">
                 <label class="input_name"for="sobrenome">Sobrenome:</label>
-                <input type="text" name="sobrenome" placeholder="Sobrenome" value="{{request.POST.Sobrenome}} "class="form-control" id="sobrenome">
+                <input type="text" name="sobrenome" placeholder="Sobrenome" value="{{request.POST.sobrenome}} "class="form-control" id="sobrenome">
             </div>
         </div>
         <br>
@@ -48,12 +48,12 @@
         
        <div class="form-row">
             <div class="caixa col-md-10">
-                <label class="input_clinica"for="sobrenome">Nome da Clínica que realizou o exame:</label>
-                <input type="text" class="form-control" name="nomeClinica" value="{{request.POST.nomeClinica}}"  placeholder="Nome da clinica">
+                <label class="input_clinica"for="nomeClinica">Nome da Clínica:</label>
+                <input type="text" class="form-control" name="nomeClinica" value="{{request.POST.nomeClinica}}"  >
  
             </div>
             <div class="caixa col-md-2">
-                <label class="input_idade"for="idade_paciente">Idade do Paciente:</label>
+                <label class="input_idade"for="idadePaciente">Idade do Paciente:</label>
                 <input type="number" class="form-control" name="idadePaciente" value="{{request.POST.idadePaciente}}"id="IdadePaciente">
             </div>
             

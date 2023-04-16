@@ -1,13 +1,38 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Form,Paciente
+from .models import Form
 
-
-                    
+           
 class Perguntas(admin.ModelAdmin):
     list_display = [
-        'dado_paciente',
+        'nomePaciente',
+        'sobrenome',
+        'nomeclinica',
+        'sexo',
+        'idadepaciente',
+        'mutacaoGenetica',
+        'opc_bilateral',
+        'opc_ovario',
+        'cancer_mama',
+        'cancer_diagnostico',
+        'cancer_histologico',
+        'tipo_molecular',
+        'tam_cancer',
+        'qtd_parent_1',
+        'qtd_parent_2',
+        'parent_seg_grau',
+        'parent_pri_grau',
+        'asc_judia'
+    ]
+
+    fields = [
+        'id',
+        'nomePaciente',
+        'sobrenome',
+        'nomeclinica',
+        'sexo',
+        'idadepaciente',
         'mutacaoGenetica',
         'opc_bilateral',
         'opc_ovario',
@@ -24,6 +49,5 @@ class Perguntas(admin.ModelAdmin):
     ]
 
 
-admin.site.register(Paciente)
 
 admin.site.register(Form, Perguntas)
