@@ -14,9 +14,9 @@ class Perguntas(admin.ModelAdmin):
         'mutacaoGenetica',
         'opc_bilateral',
         'opc_ovario',
+        'temcancer',
         'cancer_mama',
-        'cancer_diagnostico',
-        'cancer_histologico',
+        'idade_diagnostico',
         'tipo_molecular',
         'tam_cancer',
         'qtd_parent_1',
@@ -27,8 +27,7 @@ class Perguntas(admin.ModelAdmin):
     ]
 
     fields = [
-        'id',
-        'nomePaciente',
+       'nomePaciente',
         'sobrenome',
         'nomeclinica',
         'sexo',
@@ -36,9 +35,9 @@ class Perguntas(admin.ModelAdmin):
         'mutacaoGenetica',
         'opc_bilateral',
         'opc_ovario',
+        'temcancer',
         'cancer_mama',
-        'cancer_diagnostico',
-        'cancer_histologico',
+        'idade_diagnostico',
         'tipo_molecular',
         'tam_cancer',
         'qtd_parent_1',

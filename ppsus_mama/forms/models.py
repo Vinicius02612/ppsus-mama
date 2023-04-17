@@ -5,16 +5,16 @@ from django.utils import timezone
 
 """ Furmulario referente as questões para treinar o modelo """
 class Form(models.Model):
-    nomePaciente = models.CharField(max_length=255, blank=False)
-    sobrenome = models.CharField(max_length=255, blank=False)
-    nomeclinica =  models.CharField(max_length=255, blank=False)
+    nomePaciente = models.CharField("Nome do paciente:",max_length=255, blank=False)
+    sobrenome = models.CharField("Sobrenome:",max_length=255, blank=False)
+    nomeclinica =  models.CharField("Nome da clinica:",max_length=255, blank=False)
 
     tuplesexo = (
         ("M", "Feminino"),
-        ("F", "Matutino"),
+        ("F", "Masculino"),
     )
     sexo = models.CharField("Sexo",  max_length=2,choices=tuplesexo , blank=False)
-    idadepaciente =  models.CharField(max_length=3, blank=False)
+    idadepaciente =  models.CharField("Idade do paciente:",max_length=3, blank=False)
 
     
     tupleMutacao = (
@@ -22,7 +22,7 @@ class Form(models.Model):
         ("2", "BRCA2"),
         ("3", "TP54"),
         ("4", "CDH1"),
-        ("5", "STK11"),
+        ("5", "STK11"), 
         ("6", "PTEN"),
         ("7", "PALB2"),
         ("8", "VUS")
@@ -37,9 +37,6 @@ class Form(models.Model):
     opc_bilateral = models.CharField("Historico Pessoal de cancer de mama bilateral:",max_length=1, choices=tupleOpcao)
     opc_ovario = models.CharField("Tem historico Pessoal de cançer de ovario?",max_length=1, choices=tupleOpcao)
 
-
-
-
     temcancer = models.CharField("Tem câncer de mama?",max_length=2, choices=tupleOpcao)
 
     tupleCancer = (
@@ -53,23 +50,59 @@ class Form(models.Model):
 
     cancer_mama = models.CharField("Se tem câncer de mama, qual tipo histologico?",max_length=2, choices=tupleCancer)
 
-    cancer_diagnostico =  models.CharField(max_length=2)
-    cancer_histologico = models.CharField(max_length=2)
+    tupleIdadeCancer = (
+        ("1","Maior que 60 anos"),
+        ("2", "Entre 55 e 60 anos"),
+        ("3", "Entre 45 e 55 anos"),
+        ("4", "Entre 35 e 45 anos"),
+        ("5", "Entre 30 e 35 anos"),
+        ("6", "Menor que 30 anos"),
+        
+    )
+    idade_diagnostico =  models.CharField("Faixa de idade do diagnostico de câncer de mama:",max_length=2, choices=tupleIdadeCancer)
+
+    
+    tupleTipoMolecular = (
+        ("1", "Lumial"),
+        ("2", "Lumial HEr2"),
+        ("3", "HEr2"),
+        ("4", "Triplo Negativo"),
+    )
 
 
-    tipo_molecular = models.CharField(max_length=25)
-    tam_cancer = models.CharField(max_length=25)
-    qtd_parent_1 = models.CharField(max_length=25)
-    qtd_parent_2 = models.CharField(max_length=25)
+    tipo_molecular = models.CharField(" Tipo molecular de câncer de mama:",max_length=2, choices=tupleTipoMolecular)
 
-    parent_seg_grau =  models.CharField(max_length=25)
-    parent_pri_grau =  models.CharField(max_length=25)
+    tupleTamanhoDoCancer = (
+        ("1", "Insitu"),
+        ("2", "T1"),
+        ("3", "T2"),
+        ("4", "T3"),
+        ("5", "T4"),
+    )
+    tam_cancer = models.CharField("Se tem câncer, qual o tamanho do tumor:",max_length=2,choices=tupleTamanhoDoCancer)
+    
+    tupleQtdParente = (
+        ("1", "Um"),
+        ("2", "Dois"),
+        ("3", "Três ou Mais"),
+        ("4", "Desconhece"),
+    )
+    qtd_parent_1 = models.CharField("Quantidade parentes de primeiro grau com câncer de mama:",max_length=2, choices=tupleQtdParente)
+    
+    
+    
+    
+    qtd_parent_2 = models.CharField("Quantidade de parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=2, choices=tupleQtdParente)
+    
+
+    parent_seg_grau =  models.CharField(" Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=2, choices=tupleQtdParente)
+    parent_pri_grau =  models.CharField("Parentes de primeiro grau com :",max_length=2,choices=tupleQtdParente)
 
 
-    asc_judia =  models.CharField(max_length=25)
+    asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=2, choices=tupleOpcao)
 
     def __str__(self) -> str:
-        return self.dado_paciente
+        return self.nomePaciente
 
 
 
