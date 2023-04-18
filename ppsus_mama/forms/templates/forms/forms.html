@@ -1,247 +1,44 @@
 {% extends 'base.html'%}
 
 {%block conteudo%}
-<div class="area-info-forms">
-    <div class="info-forms">
-    <p>What is the Penn II Model?
-        <ul>
-            <li>This model can be used to predict the pre-test probability (prior probability) that a person has a BRCA1 or BRCA2 mutation. Other models exist, which may provide different estimates.</li>
-            <li>This model does not predict breast cancer risk. It focuses only on the chance that an individual has inherited a mutation in BRCA1 or BRCA2.</li>
-            <li>Decisions regarding genetic testing typically include consideration of personal and family history of cancer, national and/or professional group recommendations (e.g., NCCN, USPSTF), insurance criteria and/or patient preferences, in addition to pre-test probability estimates such as provided by this model.</li>
-        
-        <li>
-            The Penn II Risk Model is an empirical model validated in families with multiple cases of breast and/or ovarian cancer. All families included in the model development had two or more individuals affected with either breast and/or ovarian cancer and one affected individual had to be a first, second or third degree relative of the other affected individual. As such, results in families with single cases of breast or ovarian cancer need to be interpreted with caution. This model was not designed to determine eligibility for multi-gene panel testing for hereditary cancer risk, rather the prior probability that an individual has a BRCA1 or BRCA2 pathogenic variant.    
-        </li>
-        </ul>  
-        
-    </p> 
-    </div>
 
+<!-- {% if messages %}
+<br><br><br>
+  {% for message in messages %}
+    
+    <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+ -->
+<div class="container">
+    <div class="area-info-forms">
+        <div class="info-forms">
+        <p>What is the Penn II Model?
+            <ul>
+                <li>This model can be used to predict the pre-test probability (prior probability) that a person has a BRCA1 or BRCA2 mutation. Other models exist, which may provide different estimates.</li>
+                <li>This model does not predict breast cancer risk. It focuses only on the chance that an individual has inherited a mutation in BRCA1 or BRCA2.</li>
+                <li>Decisions regarding genetic testing typically include consideration of personal and family history of cancer, national and/or professional group recommendations (e.g., NCCN, USPSTF), insurance criteria and/or patient preferences, in addition to pre-test probability estimates such as provided by this model.</li>
+            <li>
+                The Penn II Risk Model is an empirical model validated in families with multiple cases of breast and/or ovarian cancer. All families included in the model development had two or more individuals affected with either breast and/or ovarian cancer and one affected individual had to be a first, second or third degree relative of the other affected individual. As such, results in families with single cases of breast or ovarian cancer need to be interpreted with caution. This model was not designed to determine eligibility for multi-gene panel testing for hereditary cancer risk, rather the prior probability that an individual has a BRCA1 or BRCA2 pathogenic variant.    
+            </li>
+            </ul>  
+        </p> 
+        </div>    
+    </div>
+    
+    <form action="{% url 'forms'%}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="table">
+            
+            {{ formTo }}
+            <tr>
+                <td colspan="2">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </td>
+            </tr>
+        </table>
+    </form> 
 </div>
 
 
-
-<form method="POST" name="mainForm"  action="{% url 'forms' %}">
-    
-    <div class="form">
-        {% if messages %}
-            <br><br><br>
-            {% for message in messages %}
-                <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-        {% csrf_token %}
-        <div class="form-row">
-            <div class="col-6">
-                <label class="input_name"for="nomePaciente">Nome do paciente:</label>
-                <input type="text" name="nomePaciente" value="{{request.POST.nomePaciente}} "class="form-control"  id="nomepaciente" placeholder="Nome do paciente" >
-            </div>
-            
-            <br>
-            <div class="caixa col-6">
-                <label class="input_name"for="sobrenome">Sobrenome:</label>
-                <input type="text" name="sobrenome" placeholder="Sobrenome" value="{{request.POST.sobrenome}} "class="form-control" id="sobrenome">
-            </div>
-        </div>
-        <br>
-        
-        
-       <div class="form-row">
-            <div class="caixa col-md-10">
-                <label class="input_clinica"for="nomeClinica">Nome da Clínica:</label>
-                <input type="text" class="form-control" name="nomeClinica" value="{{request.POST.nomeClinica}}"  >
- 
-            </div>
-            <div class="caixa col-md-2">
-                <label class="input_idade"for="idadePaciente">Idade do Paciente:</label>
-                <input type="number" class="form-control" name="idadePaciente" value="{{request.POST.idadePaciente}}"id="IdadePaciente">
-            </div>
-            
-            <br>
-       </div> 
-    
-        <br>
-        <br>
-    
-    
-        <div class=" form-row ">
-            <label for="mutacao" class="col-10">1 - Teste genético apresenta mutação do tipo: </label>
-            <select class="form-select  form-control col-md-2" name="mutacao"value="{{request.POST.mutacao}}" id="mutacao">
-                <option value=" "></option>
-                <option value="1">BRCA1</option>
-                <option value="2">BRCA2</option>
-                <option value="3">TP53</option>
-                <option value="4">CDH1</option>
-                <option value="5">STK11</option>
-                <option value="6">PTEN</option>
-                <option value="7">PALB2</option>
-                <option value="8">VUS</option>
-            </select>
-        </div>
-        
-   
-        <br>
-        <div class="form-row">
-            <label for="opcao_bilateral" class="col-10">2 - Historico Pessoal de cancer de mama bilateral:</label>
-            <select name="opcao_bilateral" class=" form-control col-2" value="{{request.POST.opcao_bilateral}}" id="opcao_bilateral">
-                <option value=" "></option>
-                <option value="1">SIM</option>
-                <option value="2">NÃO</option>
-            </select>
-        </div>
-
-        <br>
-        <div class="form-row" >
-            <label for="opcao_ovario" class="col-10">3 - Tem historico Pessoal de cançer de ovario?</label>
-            <select name="opcao_ovario" class=" form-control col-2"value="{{request.POST.opcao_ovario}}" id="opcao_ovario">
-                <option value=" "></option>
-                <option value="1">SIM</option>
-                <option value="2">NÃO</option>
-            </select>
-        </div>
-        
-
-        <br>
-        <div class="form-row">
-            <label for="cancer_mama" class="col-10">4 - Teve câncer de mama?</label>
-            <select name="cancer_mama"  class=" form-control col-2" value="{{request.POST.cancer_mama}}" id="cancer_mama">
-                <option value=" "></option>
-                <option value="1">SIM</option>
-                <option value="2">NÃO</option>
-            </select>
-        </div>
-        
-
-        <br>
-        <div class="form-row">
-            <label for="cancer_diagnostio" class="col-10">5 - Faixa de idade do diagnostico de câncer de mama:</label>
-            <select name="cancer_diagnostio"class=" form-control col-2" value="{{request.POST.cancer_diagnostio}}" id="cancer_diagnostio">
-                <option value=" "></option>
-                <option value="1"> Maior que 60 anos</option>
-                <option value="2"> Entre 55  e 60 anos</option>
-                <option value="3"> Entre 45  e 55 anos</option>
-                <option value="4"> Entre 35  e 45 anos</option>
-                <option value="5"> Entre 30 e 35 anos</option>
-                <option value="6"> Menor que 30 anos</option>
-            </select>    
-        </div>
-
-  
-        <br>
-        <div class="form-row">
-            <label for="cancer_histologico" class="col-10">6 - Se tem câncer de mama, qual tipo histologico?</label>
-            <select name="cancer_histologico" class=" form-control col-2" value="{{request.POST.cancer_histologico}}" id="cancer_histologico">
-                <option value=" "></option>
-               <option value="1">Carcinoma ductal insitu</option>
-               <option value="2">Carcinoma não especial</option>
-               <option value="3">Lobural</option>
-               <option value="4">Medular</option>
-               <option value="5">Metaplatico</option>
-               <option value="6">Mucinoso</option>
-            </select>
-        </div>
-        
-       
-        <br>
-        <div class="form-row ">
-            <label for="tipo_molecular" class="col-10">7 - Tipo molecular de câncer de mama:</label>
-            <select name="tipo_molecular" class=" form-control col-2" value="{{request.POST.tipo_molecular}}" id="tipo_molecular">
-                <option value=" "></option>
-                <option value="1">Lumial</option>
-                <option value="2">Lumial HEr2</option>
-                <option value="3">HEr2</option>
-                <option value="4">Triplo Negativo</option>
-            </select>
-        </div>
-    
-       
-        <br>
-        <div class="form-row">
-            <label for="tam_cancer" class="col-10">8 - Se tem câncer, qual o tamanho do tumor:</label>
-            <select name="tam_cancer" class=" form-control col-2" value="{{request.POST.tam_cancer}}"id="tam_cancer">
-                <option value=" "></option>
-                <option value="1">Insitu</option>
-                <option value="2">T1</option>
-                <option value="3">T2 </option>
-                <option value="4">T3</option>
-                <option value="5">T4</option>
-            </select>
-        </div>
-    
-       
-        <br>
-        <div class="form-row">
-            <label for="qtd_parent_1" class="col-10">9 - Quantidade parentes de primeiro grau com câncer de mama:</label>
-            <select name="qtd_parent_1" class=" form-control col-2" value="{{request.POST.qtd_parent_1}}" id="qtd_parent_1">
-                <option value=" "></option>
-                <option value="1">Um</option>
-                <option value="2">Dois</option>
-                <option value="3">Três ou Mais</option>
-                <option value="4">Desconhece</option>
-            </select>
-        </div>
-    
-    
- 
-        <br>
-        <div class="form-row">
-            <label for="qtd_parent_2" class="col-10">10 - Quantidade parentes de primeiro grau com câncer de mama < 50 anos:</label>
-            <select name="qtd_parent_2" class=" form-control col-2" value="{{request.POST.qtd_parent_2}}" id="qtd_parent_2">
-                <option value=" "></option>
-                <option value="1">Um</option>
-                <option value="2">Dois</option>
-                <option value="3">Três ou Mais</option>
-                <option value="4">Desconhece</option>
-            </select>
-        </div>
-    
-    
-        <br>
-        <div class="form-row">
-            <label for="parent_2grua" class="col-10">11 - Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:</label>
-            <select name="parent_2grua"class=" form-control col-2" value="{{request.POST.parent_2grua}}" id="parente_segundo">
-                <option value=" "></option>
-                <option value="1">Um</option>
-                <option value="2">Dois</option>
-                <option value="3">Três ou Mais</option>
-                <option value="4">Desconhece</option>
-            </select>
-        </div>
-    
-    
-        <br>
-        <div class="form-row">
-            <label for="parent_1grua" class="col-10">12 - Parentes de primeiro grau com :</label>
-            <select name="parent_1grua" class=" form-control col-2"  value="{{request.POST.parent_1grua}}"id="parente_segundo">
-                <option value=" "></option>
-                <option value="1">Câncer de ovario</option>
-                <option value="2">Câncer de mama masculino</option>
-                <option value="3">Câncer de prostata</option>
-                <option value="4">Câncer bilateral de mama</option>
-                <option value="5">Câncer de pancreas</option>
-                <option value="6">Dois ou mais itens</option>
-                <option value="7">Nenhum </option>
-                <option value="8">Desconhece (adotada)</option>
-            </select>
-        </div>
-        <br>
-        <div class="form-row">
-            <label for="asc_judia" class="col-10">13 - Ascendencia Judia Ashkenazi:</label>
-            <select name="asc_judia" class=" form-control col-2" value="{{request.POST.asc_judia}}" id="asc_judia">
-                <option value=" "></option>
-                <option value="1">Sim</option>
-                <option value="2">não</option>
-            </select>
-        </div>
-      
-     
-        <br>
-        <div class="text-center">
-            <button class="btn btn-lg btn-danger p" type="submit">Calcular Predição</button>'
-        </div>
-    
-
-    </div>
-
-</form> 
 {%endblock%}

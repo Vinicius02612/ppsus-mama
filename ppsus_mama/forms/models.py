@@ -1,6 +1,6 @@
 from django.db import models
-from django.utils import timezone
 
+from django import forms
 # Create your models here.
 
 """ Furmulario referente as questões para treinar o modelo """
@@ -107,7 +107,10 @@ class Form(models.Model):
 
 
     
-
+class ModFormsTo(forms.ModelForm):
+    class Meta:
+        model = Form
+        exclude =()
 
 
     

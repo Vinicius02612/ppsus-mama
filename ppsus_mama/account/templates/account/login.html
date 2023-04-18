@@ -7,7 +7,6 @@
     {% if messages %}
       <br><br><br>
         {% for message in messages %}
-          
           <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
         {% endfor %}
     {% endif %}
@@ -27,8 +26,8 @@
               </div>
              
               <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label" for="exampleCheck1">Lembre-se de mim</label>
               </div>
               <br>
               <br>
@@ -41,4 +40,5 @@
         </div>
       </div>
 </form>
+<br><br><br><br><br><br><br><br>
 {% endblock %}
