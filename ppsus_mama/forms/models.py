@@ -5,9 +5,9 @@ from django import forms
 
 """ Furmulario referente as questões para treinar o modelo """
 class Form(models.Model):
-    nomePaciente = models.CharField("Nome do paciente:",max_length=255, blank=False)
-    sobrenome = models.CharField("Sobrenome:",max_length=255, blank=False)
-    nomeclinica =  models.CharField("Nome da clinica:",max_length=255, blank=False)
+    nomePaciente = models.CharField("Nome do paciente:",max_length=255, blank=True)
+    sobrenome = models.CharField("Sobrenome:",max_length=255, blank=True)
+    nomeclinica =  models.CharField("Nome da clinica:",max_length=255, blank=True)
 
     tuplesexo = (
         ("M", "Feminino"),

@@ -3,19 +3,21 @@
 
 {%block conteudo%}
 
-<div class="area-info">
-    <div class="info">
-        O que é Lorem Ipsum?
-    Lorem Ipsum é simplesmente um texto fictício da indústria tipográfica e de impressão. Lorem Ipsum tem sido o texto fictício padrão da indústria desde os anos 1500, quando um impressor desconhecido pegou uma galera de tipos e os embaralhou para fazer um livro de espécimes de tipos. Ele sobreviveu não apenas a cinco séculos, mas também ao salto para a composição eletrônica, permanecendo essencialmente inalterado. Foi popularizado na década de 1960 com o lançamento de folhas Letraset contendo passagens de Lorem Ipsum e, mais recentemente, com software de editoração eletrônica como Aldus PageMaker, incluindo versões de Lorem Ipsum.
-    </div>
-
-</div>
 <br>
-<br><br><br><br><br><br><br><br><br>
+<br><br>
 <div class="table_result">
-    <h2>Resultado da previsão de mutação BRCA1/BRCA2</h2>
-    <div>
 
+
+
+    <div>
+        <table>
+            <tr>
+                {{ formTo  }} 
+            </tr>
+          
+        </table>
+        <br><br><br><br><br>
+        <h2 class="text-center">Resultado da previsão de mutação BRCA1/BRCA2</h2>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -42,6 +44,10 @@
     <br>
     <br>
     <br>
-    <a href="{% url 'forms'%}"><button class="btn btn-lg btn-danger p" type="submit">Voltar</button></a>
+    <div class="row container pl-5">
+        <a href="{% url 'forms'%}"><button class="btn btn-lg btn-danger p" type="submit">Voltar</button></a>
+        <div class="col-9"></div>  
+    </div>
+    
 </div>
 {%endblock%}

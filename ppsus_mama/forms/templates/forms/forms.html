@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
-
 {%block conteudo%}
+{% load crispy_forms_tags %} 
 
 <!-- {% if messages %}
 <br><br><br>
@@ -13,24 +13,22 @@
 <div class="container">
     <div class="area-info-forms">
         <div class="info-forms">
-        <p>What is the Penn II Model?
+        <p class="justify">
             <ul>
-                <li>This model can be used to predict the pre-test probability (prior probability) that a person has a BRCA1 or BRCA2 mutation. Other models exist, which may provide different estimates.</li>
-                <li>This model does not predict breast cancer risk. It focuses only on the chance that an individual has inherited a mutation in BRCA1 or BRCA2.</li>
-                <li>Decisions regarding genetic testing typically include consideration of personal and family history of cancer, national and/or professional group recommendations (e.g., NCCN, USPSTF), insurance criteria and/or patient preferences, in addition to pre-test probability estimates such as provided by this model.</li>
-            <li>
-                The Penn II Risk Model is an empirical model validated in families with multiple cases of breast and/or ovarian cancer. All families included in the model development had two or more individuals affected with either breast and/or ovarian cancer and one affected individual had to be a first, second or third degree relative of the other affected individual. As such, results in families with single cases of breast or ovarian cancer need to be interpreted with caution. This model was not designed to determine eligibility for multi-gene panel testing for hereditary cancer risk, rather the prior probability that an individual has a BRCA1 or BRCA2 pathogenic variant.    
-            </li>
+                <li>Este modelo pode ser usado para prever a probabilidade pré-teste (probabilidade anterior) de que uma pessoa tenha uma mutação BRCA1 ou BRCA2. Existem outros modelos, que podem fornecer estimativas diferentes.</li>
+                <li>Este modelo não prevê o risco de câncer de mama. Ele se concentra apenas na chance de um indivíduo ter herdado uma mutação no BRCA1 ou BRCA2.</li>
+                <li>As decisões sobre testes genéticos geralmente incluem a consideração do histórico pessoal e familiar de câncer, recomendações de grupos nacionais e/ou profissionais, critérios de seguro e/ou preferências do paciente, além de estimativas de probabilidade pré-teste, como fornecidas por este modelo.</li>
+            
             </ul>  
         </p> 
         </div>    
     </div>
     
     <form action="{% url 'forms'%}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+        
         <table class="table">
-            
-            {{ formTo }}
+            {% csrf_token %}
+            {{  formTo | crispy }}
             <tr>
                 <td colspan="2">
                     <button type="submit" class="btn btn-primary">Enviar</button>
