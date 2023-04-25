@@ -6,6 +6,7 @@ from .models import Form
            
 class Perguntas(admin.ModelAdmin):
     list_display = [
+        'id',
         'nomePaciente',
         'sobrenome',
         'nomeclinica',

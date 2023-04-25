@@ -77,7 +77,7 @@ def login(request):
     else:
         auth.login(request, user)
         messages.success(request, 'Login realizado com sucesso.')
-        return redirect('dashboard')
+        return redirect('forms')
 
 @login_required(redirect_field_name='login')
 def dashboard(request):
@@ -90,11 +90,11 @@ def dashboard(request):
     if not form.is_valid():
         messages.error(request, 'erro ao enviar formulario, verifique se so dados foram preenchidos corretamente.')
         form = ModForms(request.POST)
-        return render(request, 'account/dashboard.html', {'form': form })
+        return render(request, 'forms/forms.html', {'form': form })
 
     form.save()
     messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
-    return redirect('dashboard')
+    return redirect('forms/forms.html')
 
 
 def logout(request):

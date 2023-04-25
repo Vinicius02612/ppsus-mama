@@ -2,6 +2,21 @@
 
 {%block conteudo%}
 
-Pagina para adicionar e remover perguntas
+<div class="container">
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
+    {% endfor %}
+    <h1>Bem vindo</h1>
+    
+    <section>
+        <h4>
+            Este sistema visa realizar o calculo
+        </h4>
+    </section>
+
+
+</div>
+
+<a href="{% url 'forms'%}"><button class="btn btn-success"> Ir para o formulario</button></a>
 
 {%endblock%}
