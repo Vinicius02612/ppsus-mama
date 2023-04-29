@@ -77,7 +77,7 @@ def login(request):
     else:
         auth.login(request, user)
         messages.success(request, 'Login realizado com sucesso.')
-        return redirect('forms')
+        return redirect('dashboard')
 
 @login_required(redirect_field_name='login')
 def dashboard(request):
