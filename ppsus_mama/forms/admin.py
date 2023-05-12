@@ -50,4 +50,5 @@ class Perguntas(admin.ModelAdmin):
 
 
 
+
 admin.site.register(Form, Perguntas)
