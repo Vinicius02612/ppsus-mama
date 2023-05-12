@@ -18,88 +18,84 @@ class Form(models.Model):
 
     
     tupleMutacao = (
-        ("1", "BRCA1"),
-        ("2", "BRCA2"),
-        ("3", "TP54"),
-        ("4", "CDH1"),
-        ("5", "STK11"), 
-        ("6", "PTEN"),
-        ("7", "PALB2"),
-        ("8", "VUS")
+        ("BRCA1", "BRCA1"),
+        ("BRCA2", "BRCA2"),
+        ("TP54", "TP54"),
+        ("CDH1", "CDH1"),
+        ("STK11", "STK11"), 
+        ("PTEN", "PTEN"),
+        ("PALB2", "PALB2"),
+        ("VUS", "VUS")
     )
-    mutacaoGenetica =  models.CharField("Teste genético apresenta mutação do tipo:",max_length=1, choices=tupleMutacao)
+    mutacaoGenetica =  models.CharField("Teste genético apresenta mutação do tipo:",max_length=5, choices=tupleMutacao)
 
     tupleOpcao = (
-        ("1", "SIM"),
-        ("2", "NAO"),
+        ("SIM", "SIM"),
+        ("NAO", "NAO"),
     )
 
-    opc_bilateral = models.CharField("Historico Pessoal de cancer de mama bilateral:",max_length=1, choices=tupleOpcao)
-    opc_ovario = models.CharField("Tem historico Pessoal de cançer de ovario?",max_length=1, choices=tupleOpcao)
+    opc_bilateral = models.CharField("Historico Pessoal de cancer de mama bilateral:",max_length=3, choices=tupleOpcao)
+    opc_ovario = models.CharField("Tem historico Pessoal de cançer de ovario?",max_length=3, choices=tupleOpcao)
 
-    temcancer = models.CharField("Tem câncer de mama?",max_length=2, choices=tupleOpcao)
+    temcancer = models.CharField("Tem câncer de mama?",max_length=3, choices=tupleOpcao)
 
     tupleCancer = (
-        ("1", "Carcinoma ductal insitu"),
-        ("2", "Carcinoma não epecial"),
-        ("3", "Lobural"),
-        ("4", "Medular"),
-        ("5", "Metaplatico"),
-        ("6", "Mucinoso"),
+        ("Carcinoma ductal insitu", "Carcinoma ductal insitu"),
+        ("Carcinoma não epecial", "Carcinoma não epecial"),
+        ("Lobural", "Lobural"),
+        ("Medular", "Medular"),
+        ("Metaplatico", "Metaplatico"),
+        ("Mucinoso", "Mucinoso"),
     )
 
-    cancer_mama = models.CharField("Se tem câncer de mama, qual tipo histologico?",max_length=2, choices=tupleCancer)
+    cancer_mama = models.CharField("Se tem câncer de mama, qual tipo histologico?",max_length=25, choices=tupleCancer)
 
     tupleIdadeCancer = (
-        ("1","Maior que 60 anos"),
-        ("2", "Entre 55 e 60 anos"),
-        ("3", "Entre 45 e 55 anos"),
-        ("4", "Entre 35 e 45 anos"),
-        ("5", "Entre 30 e 35 anos"),
-        ("6", "Menor que 30 anos"),
+        ("Maior que 60 anos","Maior que 60 anos"),
+        ("Entre 55 e 60 anos", "Entre 55 e 60 anos"),
+        ("Entre 45 e 55 anos", "Entre 45 e 55 anos"),
+        ("Entre 35 e 45 anos", "Entre 35 e 45 anos"),
+        ("Entre 30 e 35 anos", "Entre 30 e 35 anos"),
+        ("Menor que 30 anos", "Menor que 30 anos"),
         
     )
-    idade_diagnostico =  models.CharField("Faixa de idade do diagnostico de câncer de mama:",max_length=2, choices=tupleIdadeCancer)
+    idade_diagnostico =  models.CharField("Faixa de idade do diagnostico de câncer de mama:",max_length=25, choices=tupleIdadeCancer)
 
-    
     tupleTipoMolecular = (
-        ("1", "Lumial"),
-        ("2", "Lumial HEr2"),
-        ("3", "HEr2"),
-        ("4", "Triplo Negativo"),
+        ("Lumial", "Lumial"),
+        ("Lumial HEr2", "Lumial HEr2"),
+        ("HEr2", "HEr2"),
+        ("Triplo Negativo", "Triplo Negativo"),
     )
 
-
-    tipo_molecular = models.CharField(" Tipo molecular de câncer de mama:",max_length=2, choices=tupleTipoMolecular)
+    tipo_molecular = models.CharField(" Tipo molecular de câncer de mama:",max_length=16, choices=tupleTipoMolecular)
 
     tupleTamanhoDoCancer = (
-        ("1", "Insitu"),
-        ("2", "T1"),
-        ("3", "T2"),
-        ("4", "T3"),
-        ("5", "T4"),
+        ("Insitu", "Insitu"),
+        ("T1", "T1"),
+        ("T2", "T2"),
+        ("T3", "T3"),
+        ("T4", "T4"),
     )
-    tam_cancer = models.CharField("Se tem câncer, qual o tamanho do tumor:",max_length=2,choices=tupleTamanhoDoCancer)
+    tam_cancer = models.CharField("Se tem câncer, qual o tamanho do tumor:",max_length=7,choices=tupleTamanhoDoCancer)
     
     tupleQtdParente = (
-        ("1", "Um"),
-        ("2", "Dois"),
-        ("3", "Três ou Mais"),
-        ("4", "Desconhece"),
+        ("Um", "Um"),
+        ("Dois", "Dois"),
+        ("Três ou Mais", "Três ou Mais"),
+        ("Desconhece", "Desconhece"),
     )
-    qtd_parent_1 = models.CharField("Quantidade parentes de primeiro grau com câncer de mama:",max_length=2, choices=tupleQtdParente)
+    qtd_parent_1 = models.CharField("Quantidade parentes de primeiro grau com câncer de mama:",max_length=12, choices=tupleQtdParente)
     
-    
-    
-    
-    qtd_parent_2 = models.CharField("Quantidade de parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=2, choices=tupleQtdParente)
+    qtd_parent_2 = models.CharField("Quantidade de parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=12, choices=tupleQtdParente)
     
 
-    parent_seg_grau =  models.CharField(" Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=2, choices=tupleQtdParente)
-    parent_pri_grau =  models.CharField("Parentes de primeiro grau com :",max_length=2,choices=tupleQtdParente)
+    parent_seg_grau =  models.CharField(" Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=12, choices=tupleQtdParente)
+    parent_pri_grau =  models.CharField("Parentes de primeiro grau com :",max_length=12,choices=tupleQtdParente)
 
 
-    asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=2, choices=tupleOpcao)
+    asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=12, choices=tupleOpcao)
+    mostrar = models.BooleanField(default=True)
 
     def __str__(self) -> str:
         return self.nomePaciente

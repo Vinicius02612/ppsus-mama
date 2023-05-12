@@ -4,7 +4,7 @@ from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from .models import ModForms
+from .models import Form
 
 
 # Create your views here.
@@ -81,22 +81,13 @@ def login(request):
 
 @login_required(redirect_field_name='login')
 def dashboard(request):
-    if request.method != 'POST':
-        form =  ModForms()
-        return render(request, 'account/dashboard.html', {'form': form})
+    forms = Form.objects.order_by('id').filter(mostrar = True)
+    return render(request, 'account/dashboard.html', {
+        'form': forms
+    })
     
-    form = ModForms(request.POST)
-
-    if not form.is_valid():
-        messages.error(request, 'erro ao enviar formulario, verifique se so dados foram preenchidos corretamente.')
-        form = ModForms(request.POST)
-        return render(request, 'forms/forms.html', {'form': form })
-
-    form.save()
-    messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
-    return redirect('forms/forms.html')
-
-
+    
+    
 def logout(request):
     auth.logout(request)
     return redirect('login')

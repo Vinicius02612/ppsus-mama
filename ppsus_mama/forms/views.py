@@ -36,10 +36,7 @@ def report(request, id_forms):
     
 @login_required(redirect_field_name='login')
 def results(request):
-
     
-
-
     return render(request, 'forms/results.html')
     
 

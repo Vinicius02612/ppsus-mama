@@ -6,3 +6,13 @@
     text-decoration: none;
     color: aliceblue;
 }
+
+
+table{
+    width: 100%;
+    height: 500px;
+}
+
+table > thead > th{
+    width: 500px;
+}
