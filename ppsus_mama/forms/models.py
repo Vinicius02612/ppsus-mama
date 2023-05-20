@@ -95,7 +95,7 @@ class Form(models.Model):
 
 
     asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=12, choices=tupleOpcao)
-    mostrar = models.BooleanField(default=True)
+    
 
     def __str__(self) -> str:
         return self.nomePaciente
