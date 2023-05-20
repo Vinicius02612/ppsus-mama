@@ -81,7 +81,7 @@ def login(request):
 
 @login_required(redirect_field_name='login')
 def dashboard(request):
-    forms = Form.objects.order_by('id').filter(mostrar = True)
+    forms = Form.objects.order_by('id')
     return render(request, 'account/dashboard.html', {
         'form': forms
     })

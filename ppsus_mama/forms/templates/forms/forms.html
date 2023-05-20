@@ -2,14 +2,7 @@
 {%block conteudo%}
 {% load crispy_forms_tags %} 
 
-<!-- {% if messages %}
-<br><br><br>
-  {% for message in messages %}
-    
-    <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
-  {% endfor %}
-{% endif %}
- -->
+
 <div class="container">
     <div class="area-info-forms">
         <div class="info-forms">
@@ -25,7 +18,14 @@
     </div>
     
     <form action="{% url 'forms'%}" method="POST" enctype="multipart/form-data">
+        {% if messages %}
+            <br><br><br>
+            {% for message in messages %}
         
+            <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
         <table class="table">
             {% csrf_token %}
             {{  formTo | crispy }}
