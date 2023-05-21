@@ -91,15 +91,26 @@ class Form(models.Model):
     
 
     parent_seg_grau =  models.CharField(" Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=12, choices=tupleQtdParente)
-    parent_pri_grau =  models.CharField("Parentes de primeiro grau com :",max_length=12,choices=tupleQtdParente)
 
+
+    tupleParentePrimeiroGrau= (
+        ("Cancer de ovario", "Cancer de ovario"),
+        ("Cancer de mama masculino", "Cancer de mama masculino"),
+        ("Cancer de prostata", "Cancer de prostata"),
+        ("Cancer bilateral de mama", "Cancer bilateral de mama"),
+        ("Cancer de pancreas", "Cancer de pancreas"),
+        ("Dois ou mais itens", "Dois ou mais itens"),
+        ("Nenhum", "Nenhum"),
+        ("Desconhce","Desconhece")
+
+    )
+    parent_pri_grau =  models.CharField("Parentes de primeiro grau com :",max_length=25,choices=tupleParentePrimeiroGrau)
 
     asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=12, choices=tupleOpcao)
     
 
     def __str__(self) -> str:
         return self.nomePaciente
-
 
 
     
