@@ -16,7 +16,7 @@
         </p> 
         </div>    
     </div>
-    
+
     <form action="{% url 'forms'%}" method="POST" enctype="multipart/form-data">
         {% if messages %}
             <br><br><br>
@@ -24,17 +24,20 @@
                 <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
             {% endfor %}
         {% endif %}
-
+    
         <table class="table">
             {% csrf_token %}
             {{  formTo | crispy }}
-            <tr>
-                <td colspan="2">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </td>
-            </tr>
+            
         </table>
-    </form> 
+    </form>
+    <div class="row container pl-5">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <div class="col-8"></div>
+        <a href="{% url 'dashboard'%}" class="" ><button class="btn btn-success ">Voltar para Dashboard</button></a>   
+    </div>
+     
+
 </div>
 
 

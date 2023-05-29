@@ -3,15 +3,15 @@ from django.db import models
 from django import forms
 # Create your models here.
 
-""" Furmulario referente as questões para treinar o modelo """
+""" Furmulario"""
 class Form(models.Model):
     nomePaciente = models.CharField("Nome do paciente:",max_length=255, blank=True)
     sobrenome = models.CharField("Sobrenome:",max_length=255, blank=True)
     nomeclinica =  models.CharField("Nome da clinica:",max_length=255, blank=True)
 
     tuplesexo = (
-        ("M", "Feminino"),
-        ("F", "Masculino"),
+        ("F", "Feminino"),
+        ("M", "Masculino"),
     )
     sexo = models.CharField("Sexo",  max_length=2,choices=tuplesexo , blank=False)
     idadepaciente =  models.CharField("Idade do paciente:",max_length=3, blank=False)
@@ -68,7 +68,7 @@ class Form(models.Model):
         ("Triplo Negativo", "Triplo Negativo"),
     )
 
-    tipo_molecular = models.CharField(" Tipo molecular de câncer de mama:",max_length=16, choices=tupleTipoMolecular)
+    tipo_molecular = models.CharField("Tipo molecular de câncer de mama:",max_length=16, choices=tupleTipoMolecular)
 
     tupleTamanhoDoCancer = (
         ("Insitu", "Insitu"),
@@ -108,12 +108,12 @@ class Form(models.Model):
 
     asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=12, choices=tupleOpcao)
     
-
     def __str__(self) -> str:
         return self.nomePaciente
 
 
-    
+
+
 class ModFormsTo(forms.ModelForm):
     class Meta:
         model = Form
