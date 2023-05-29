@@ -12,11 +12,6 @@ def forms(request):
         formTo = ModFormsTo()
         return render(request, "forms/forms.html", {'formTo':formTo})
     
-    sexo = request.POST.get('sexo')
-
-    if not sexo:
-        messages.error(request, "todos os dados devem ser preenchidos.")
-
     formTo = ModFormsTo(request.POST)
     if not formTo.is_valid():
         messages.error(request, "Erro ao enviar formulario, verifique os campos.")
@@ -26,6 +21,7 @@ def forms(request):
     formTo.save()
     messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
     return render(request, "forms/results.html", {'formTo':formTo})
+
 
 @login_required(redirect_field_name='login')
 def report(request, id_forms):
