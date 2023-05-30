@@ -12,23 +12,26 @@
             Olá este sistema visa auxiliar na prevenção do cançer de mama por meio de um formulario.
         </h4>
     </section>
-    <a href="{% url 'forms'%}"><button class="btn btn-success"> Ir para o formulario</button></a>
+    <div class="row">
+        <a href="{% url 'forms'%}" class=""><button class="btn btn-success"> Ir para o formulario</button></a>
+        <div class="col-7"></div>
+        <a ><button class="btn btn-success">Adicionar uma nova pergunta</button></a>
+    </div>
 </div>
-
     <div class="table-responsive mt-5">
-        
         <table class="table table-sm">
-
-                <thead class="thead-dark w-10">
-                    <tr> 
-                        <th class="text-nowrap w-100 p-3" >Nome do Paciente</th>
+                <thead class="thead-dark w-100">
+                    
+                    <tr>
+                        <th class="text-nowrap w-100 p-3 " >ID</th>
+                        <th class="text-nowrap w-100 p-3 " >Nome do Paciente</th>
                         <th class="text-nowrap w-100 p-3">Sobrenome</th>
                         <th class="text-nowrap w-100 p-3 ">Nome da Clinica</th>
                         <th class="text-nowrap w-100 p-3 ">sexo</th>
                         <th class="text-nowrap w-100 p-3 ">Idade do paciente</th>
                         <th class="text-nowrap w-100 p-3 ">Teste genético apresenta mutação do tipo</th>
-                        <th class="text-nowrap w-100 p-3 ">Historico Pessoal </th>
-                        <th class="text-nowrap w-100 p-3 ">Tem historico</th>
+                        <th class="text-nowrap w-100 p-3 ">Historico pessoal de cancer de mama bilateral</th>
+                        <th class="text-nowrap w-100 p-3 ">Tem historico pessoal de cançer de ovario?</th>
                         <th class="text-nowrap w-100 p-3 ">Tem câncer de mama?</th>
                         <th class="text-nowrap w-100 p-3 ">Se tem câncer de mama, qual tipo histologico</th>
                         <th class="text-nowrap w-100 p-3 ">Faixa de idade do diagnostico de câncer de mama</th>
@@ -38,11 +41,13 @@
                         <th class="text-nowrap w-100 p-3 " >Parentes de segundo grau ou mais distante com cancer de mama ou ovario < 50 anos</th>
                         <th class="text-nowrap w-100 p-3 ">Parentes de primeiro grau com</th>
                         <th class="text-nowrap w-100 p-3 ">Ascendencia Judia Ashkenazi</th>
+                        <th class="text-nowrap w-100 p-3 ">Ações</th>
                     </tr>
                 </thead>
             <tbody>
                 {%for question in form %}
                     <tr>
+                        <td>{{question.id}}</td>
                         <td class="text-center">{{question.nomePaciente}}</td>
                         <td class="text-center" >{{question.sobrenome}}</td>
                         <td class="text-center">{{question.nomeclinica}}</td>
@@ -61,6 +66,7 @@
                         <td class="text-center">{{question.parent_seg_grau}}</td>
                         <td class="text-center">{{question.parent_pri_grau}}</td>
                         <td class="text-center">{{question.asc_judia}}</td>
+                        <td><button class="btn btn-warning">Deletar</button></td>
                     </tr>
                 {% endfor %}
             </tbody>  
