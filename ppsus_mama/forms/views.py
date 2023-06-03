@@ -34,6 +34,9 @@ def report(request, id_forms):
 def results(request):
     
     return render(request, 'forms/results.html')
+
+
+
     
 
     

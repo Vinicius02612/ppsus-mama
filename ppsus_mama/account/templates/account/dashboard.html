@@ -1,10 +1,13 @@
 {% extends 'base.html'%}
+    
 
 {%block conteudo%}
 
     {% for message in messages %}
         <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
     {% endfor %}
+
+    
     <h1>Bem vindo {{user.first_name}} {{user.last_name}}</h1>
     
     <section>
@@ -12,63 +15,58 @@
             Olá este sistema visa auxiliar na prevenção do cançer de mama por meio de um formulario.
         </h4>
     </section>
-    <div class="row">
-        <a href="{% url 'forms'%}" class=""><button class="btn btn-success"> Ir para o formulario</button></a>
-        <div class="col-7"></div>
-        <a ><button class="btn btn-success">Adicionar uma nova pergunta</button></a>
     </div>
-</div>
-    <div class="table-responsive mt-5">
-        <table class="table table-sm">
-                <thead class="thead-dark w-100">
-                    <tr>
-                        <th class="text-nowrap w-100 p-3 " >ID</th>
-                        <th class="text-nowrap w-100 p-3 " >Nome do Paciente</th>
-                        <th class="text-nowrap w-100 p-3">Sobrenome</th>
-                        <th class="text-nowrap w-100 p-3 ">Nome da Clinica</th>
-                        <th class="text-nowrap w-100 p-3 ">sexo</th>
-                        <th class="text-nowrap w-100 p-3 ">Idade do paciente</th>
-                        <th class="text-nowrap w-100 p-3 ">Teste genético apresenta mutação do tipo</th>
-                        <th class="text-nowrap w-100 p-3 ">Historico pessoal de cancer de mama bilateral</th>
-                        <th class="text-nowrap w-100 p-3 ">Tem historico pessoal de cançer de ovario?</th>
-                        <th class="text-nowrap w-100 p-3 ">Tem câncer de mama?</th>
-                        <th class="text-nowrap w-100 p-3 ">Se tem câncer de mama, qual tipo histologico</th>
-                        <th class="text-nowrap w-100 p-3 ">Faixa de idade do diagnostico de câncer de mama</th>
-                        <th class="text-nowrap w-100 p-3 ">Tipo molecular de câncer de mama</th>
-                        <th class="text-nowrap w-100 p-3 ">Se tem câncer, qual o tamanho do tumor</th>
-                        <th class="text-nowrap w-100 p-3 " >Quantidade parentes de primeiro grau com câncer de mama</th>
-                        <th class="text-nowrap w-100 p-3 " >Parentes de segundo grau ou mais distante com cancer de mama ou ovario < 50 anos</th>
-                        <th class="text-nowrap w-100 p-3 ">Parentes de primeiro grau com</th>
-                        <th class="text-nowrap w-100 p-3 ">Ascendencia Judia Ashkenazi</th>
-                        <th class="text-nowrap w-100 p-3 ">Ações</th>
-                    </tr>
-                </thead>
-            <tbody>
-                {%for question in form %}
-                    <tr>
-                        <td>{{question.id}}</td>
-                        <td class="text-center">{{question.nomePaciente}}</td>
-                        <td class="text-center" >{{question.sobrenome}}</td>
-                        <td class="text-center">{{question.nomeclinica}}</td>
-                        <td class="text-center">{{question.sexo}}</td>
-                        <td class="text-center">{{question.idadepaciente}}</td>
-                        <td class="text-center">{{question.mutacaoGenetica}}</td>
-                        <td class="text-center">{{question.opc_bilateral}}</td>
-                        <td class="text-center">{{question.opc_ovario}}</td>
-                        <td class="text-center">{{question.temcancer}}</td>
-                        <td class="text-center">{{question.cancer_mama}}</td>
-                        <td class="text-center">{{question.idade_diagnostico}}</td>
-                        <td class="text-center">{{question.tipo_molecular}}</td>
-                        <td class="text-center">{{question.tam_cancer}}</td>
-                        <td class="text-center">{{question.qtd_parent_1}}</td>
-                        <td class="text-center">{{question.qtd_parent_2}}</td>
-                        <td class="text-center">{{question.parent_seg_grau}}</td>
-                        <td class="text-center">{{question.parent_pri_grau}}</td>
-                        <td class="text-center">{{question.asc_judia}}</td>
-                        <td><button class="btn btn-warning">Deletar</button></td>
-                    </tr>
-                {% endfor %}
-            </tbody>  
-        </table>
-    </div>
+        <div class="table-responsive mt-5">
+            <table class="table table-sm">
+                    <thead class="thead-dark w-100">
+                        <tr>
+                            <th class="text-nowrap w-100 p-3 " >ID</th>
+                            <th class="text-nowrap w-100 p-3 " >Nome do Paciente</th>
+                            <th class="text-nowrap w-100 p-3">Sobrenome</th>
+                            <th class="text-nowrap w-100 p-3 ">Nome da Clinica</th>
+                            <th class="text-nowrap w-100 p-3 ">sexo</th>
+                            <th class="text-nowrap w-100 p-3 ">Idade do paciente</th>
+                            <th class="text-nowrap w-100 p-3 ">Teste genético apresenta mutação do tipo</th>
+                            <th class="text-nowrap w-100 p-3 ">Historico pessoal de cancer de mama bilateral</th>
+                            <th class="text-nowrap w-100 p-3 ">Tem historico pessoal de cançer de ovario?</th>
+                            <th class="text-nowrap w-100 p-3 ">Tem câncer de mama?</th>
+                            <th class="text-nowrap w-100 p-3 ">Se tem câncer de mama, qual tipo histologico</th>
+                            <th class="text-nowrap w-100 p-3 ">Faixa de idade do diagnostico de câncer de mama</th>
+                            <th class="text-nowrap w-100 p-3 ">Tipo molecular de câncer de mama</th>
+                            <th class="text-nowrap w-100 p-3 ">Se tem câncer, qual o tamanho do tumor</th>
+                            <th class="text-nowrap w-100 p-3 " >Quantidade parentes de primeiro grau com câncer de mama</th>
+                            <th class="text-nowrap w-100 p-3 " >Parentes de segundo grau ou mais distante com cancer de mama ou ovario < 50 anos</th>
+                            <th class="text-nowrap w-100 p-3 ">Parentes de primeiro grau com</th>
+                            <th class="text-nowrap w-100 p-3 ">Ascendencia Judia Ashkenazi</th>
+                            <th class="text-nowrap w-100 p-3 ">Ações</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    {%for question in form %}
+                        <tr>
+                            <td>{{question.id}}</td>
+                            <td class="text-center">{{question.nomePaciente}}</td>
+                            <td class="text-center" >{{question.sobrenome}}</td>
+                            <td class="text-center">{{question.nomeclinica}}</td>
+                            <td class="text-center">{{question.sexo}}</td>
+                            <td class="text-center">{{question.idadepaciente}}</td>
+                            <td class="text-center">{{question.mutacaoGenetica}}</td>
+                            <td class="text-center">{{question.opc_bilateral}}</td>
+                            <td class="text-center">{{question.opc_ovario}}</td>
+                            <td class="text-center">{{question.temcancer}}</td>
+                            <td class="text-center">{{question.cancer_mama}}</td>
+                            <td class="text-center">{{question.idade_diagnostico}}</td>
+                            <td class="text-center">{{question.tipo_molecular}}</td>
+                            <td class="text-center">{{question.tam_cancer}}</td>
+                            <td class="text-center">{{question.qtd_parent_1}}</td>
+                            <td class="text-center">{{question.qtd_parent_2}}</td>
+                            <td class="text-center">{{question.parent_seg_grau}}</td>
+                            <td class="text-center">{{question.parent_pri_grau}}</td>
+                            <td class="text-center">{{question.asc_judia}}</td>
+                            <td><button class="btn btn-warning">Deletar</button></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>  
+            </table>
+        </div>
 {%endblock%}

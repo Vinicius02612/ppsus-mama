@@ -87,7 +87,6 @@ def dashboard(request):
         'form': forms
     })
     
-
 def logout(request):
     auth.logout(request)
     return redirect('login')
