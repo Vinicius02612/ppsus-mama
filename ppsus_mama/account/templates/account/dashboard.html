@@ -2,16 +2,16 @@
     
 
 {%block conteudo%}
-
     {% for message in messages %}
         <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
     {% endfor %}
-
-    
     <h1>Bem vindo {{user.first_name}} {{user.last_name}}</h1>
-    
-    <section>
+    <section class="alert">
         <h4>
+            Olá este sistema visa auxiliar na prevenção do cançer de mama por meio de um formulario.
+            Olá este sistema visa auxiliar na prevenção do cançer de mama por meio de um formulario.
+            Olá este sistema visa auxiliar na prevenção do cançer de mama por meio de um formulario.
+            Olá este sistema visa auxiliar na prevenção do cançer de mama por meio de um formulario.
             Olá este sistema visa auxiliar na prevenção do cançer de mama por meio de um formulario.
         </h4>
     </section>
@@ -20,6 +20,7 @@
             <table class="table table-sm">
                     <thead class="thead-dark w-100">
                         <tr>
+                            <th></th>
                             <th class="text-nowrap w-100 p-3 " >ID</th>
                             <th class="text-nowrap w-100 p-3 " >Nome do Paciente</th>
                             <th class="text-nowrap w-100 p-3">Sobrenome</th>
@@ -38,13 +39,14 @@
                             <th class="text-nowrap w-100 p-3 " >Parentes de segundo grau ou mais distante com cancer de mama ou ovario < 50 anos</th>
                             <th class="text-nowrap w-100 p-3 ">Parentes de primeiro grau com</th>
                             <th class="text-nowrap w-100 p-3 ">Ascendencia Judia Ashkenazi</th>
-                            <th class="text-nowrap w-100 p-3 ">Ações</th>
+                            <th class="text-nowrap w-100 p-3 ">Ações</th> <!-- 19 -->
                         </tr>
                     </thead>
                 <tbody>
                     {%for question in form %}
                         <tr>
-                            <td>{{question.id}}</td>
+                            <td></td>
+                            <td class="text-center">{{question.id}}</td>
                             <td class="text-center">{{question.nomePaciente}}</td>
                             <td class="text-center" >{{question.sobrenome}}</td>
                             <td class="text-center">{{question.nomeclinica}}</td>
