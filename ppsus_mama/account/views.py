@@ -54,8 +54,6 @@ def cadastro(request):
         first_name= nome,
         last_name = sobrenome
     )
-
-
     user.save()
     messages.success(request, 'Dados cadastrados com sucesso!')
     return redirect('login')
@@ -86,7 +84,8 @@ def dashboard(request):
     return render(request, 'account/dashboard.html', {
         'form': forms
     })
-    
+
+@login_required(redirect_field_name='login')
 def logout(request):
     auth.logout(request)
     return redirect('login')

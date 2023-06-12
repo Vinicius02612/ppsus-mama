@@ -1,3 +1,8 @@
 .navbar{
-    background-color: #000000;
+    background-color: #FE3055;
+}
+
+.alert > h4{
+    font-size: 15pt;
+    text-align: justify;
 }
