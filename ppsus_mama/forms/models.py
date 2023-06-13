@@ -20,14 +20,16 @@ class Form(models.Model):
     tupleMutacao = (
         ("BRCA1", "BRCA1"),
         ("BRCA2", "BRCA2"),
-        ("TP54", "TP54"),
+        ("TP53", "TP53"),
         ("CDH1", "CDH1"),
         ("STK11", "STK11"), 
         ("PTEN", "PTEN"),
-        ("PALB2", "PALB2"),
-        ("VUS", "VUS")
+        ("PALB2","PALB2"),
+        ("VUS", "VUS"),
+        ("NÃO APRESENTA MUTAÇÃO", "NÃO APRESENTA MUTAÇÃO"),
+
     )
-    mutacaoGenetica =  models.CharField("Teste genético apresenta mutação do tipo:",max_length=5, choices=tupleMutacao)
+    mutacaoGenetica =  models.CharField("Teste genético apresenta mutação do tipo:",max_length=22, choices=tupleMutacao)
 
     tupleOpcao = (
         ("SIM", "SIM"),
@@ -46,6 +48,8 @@ class Form(models.Model):
         ("Medular", "Medular"),
         ("Metaplatico", "Metaplatico"),
         ("Mucinoso", "Mucinoso"),
+        ("Não tem cancer de mama", "Não tem cancer de mama"),
+
     )
 
     cancer_mama = models.CharField("Se tem câncer de mama, qual tipo histologico?",max_length=25, choices=tupleCancer)
@@ -62,13 +66,15 @@ class Form(models.Model):
     idade_diagnostico =  models.CharField("Faixa de idade do diagnostico de câncer de mama:",max_length=25, choices=tupleIdadeCancer)
 
     tupleTipoMolecular = (
-        ("Lumial", "Lumial"),
-        ("Lumial HEr2", "Lumial HEr2"),
+        ("Luminal", "Luminal"),
+        ("Luminal HEr2", "Luminal HEr2"),
         ("HEr2", "HEr2"),
         ("Triplo Negativo", "Triplo Negativo"),
+        ("Não tem cancer de mama", "Não tem cancer de mama"),
+
     )
 
-    tipo_molecular = models.CharField("Tipo molecular de câncer de mama:",max_length=16, choices=tupleTipoMolecular)
+    tipo_molecular = models.CharField("Tipo molecular de câncer de mama:",max_length=23, choices=tupleTipoMolecular)
 
     tupleTamanhoDoCancer = (
         ("Insitu", "Insitu"),
@@ -76,8 +82,10 @@ class Form(models.Model):
         ("T2", "T2"),
         ("T3", "T3"),
         ("T4", "T4"),
+        ("Não tem cancer de mama", "Não tem cancer de mama"),
+
     )
-    tam_cancer = models.CharField("Se tem câncer, qual o tamanho do tumor:",max_length=7,choices=tupleTamanhoDoCancer)
+    tam_cancer = models.CharField("Se tem câncer, qual o tamanho do tumor:",max_length=23,choices=tupleTamanhoDoCancer)
     
     tupleQtdParente = (
         ("Um", "Um"),

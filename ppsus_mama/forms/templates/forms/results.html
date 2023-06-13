@@ -2,10 +2,15 @@
 
 
 {%block conteudo%}
-<br>
-<br><br>
+
 <div class="table_result">
     <div>
+        {% if messages %}
+            <br><br><br>
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
         <table class="">
             <tr>
                 {{ formTo }} 
@@ -24,22 +29,22 @@
             <tbody>
                 <tr>
                     <td><b>Risco para mutação de BRCA1</b></td>
-                    <td>200%</td>
-                    <td>400%</td>
+                    <td>00%</td>
+                    <td>00%</td>
                 </tr>
                 <tr>
                     <td><b>Risco para mutação de BRCA1</b></td>
-                    <td>200%</td>
-                    <td>300%</td>
+                    <td>00%</td>
+                    <td>00%</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <br>
     <div class="row container pl-5">
-        <a href="{% url 'forms'%}"><button class="btn btn-lg btn-danger p-2" type="submit">Voltar</button></a>
-        <div class="col-8"></div>
-        <a href="{% url 'dashboard'%}"><button class="btn btn-success ml-auto p-2">Voltar para Dashboard</button></a>
+        <a href="{% url 'forms'%}"><button class="btn btn-lg btn-danger " type="submit">Voltar para o formulário</button></a>
+        <div class="col-7"></div>
+        <a href="{% url 'dashboard'%}"><button class="btn btn-success ">Voltar para Dashboard</button></a>
     </div>
 </div>
 {%endblock%}
