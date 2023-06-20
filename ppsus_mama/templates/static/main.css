@@ -6,3 +6,10 @@
     font-size: 15pt;
     text-align: justify;
 }
+
+.adicionarPergunta{
+    background:#fff;
+    display:flex;
+    flex-direction: column;
+    align-itens: cente;
+}

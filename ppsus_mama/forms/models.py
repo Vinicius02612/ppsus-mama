@@ -124,11 +124,15 @@ class Formulario(models.Model):
 
 
 class AdicionarPerguntas(forms.Form):
-    titulo =  forms.CharField(label='Titulo da Pergunta', max_length=255)
-    
-    def __str__(self) -> str:
-        return self.titulo
+    titulo =  forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label='Titulo da Pergunta', max_length=255)
+    choiceTipo = (('Select','Select'),
+                  ('Texto','Texto'))
+    tipo = forms.ChoiceField( choices=choiceTipo, required=False, widget=forms.Select(attrs={'class':'form-control'}),label='Tipo da pergunta:')
 
+
+
+dados = AdicionarPerguntas()
+print(dados)
 
 class ModFormsTo(forms.ModelForm):
     class Meta:

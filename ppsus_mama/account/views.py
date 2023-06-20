@@ -86,9 +86,10 @@ def dashboard(request):
     })
 
 
-def adicionar_novapergunta(request):
-    titulo = request.POST.get('titulo')
-    
+def adicionar_pergunta(self, request, queryset):
+        pass
+
+      
 
 @login_required(redirect_field_name='login')
 def logout(request):

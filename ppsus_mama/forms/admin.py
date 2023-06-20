@@ -55,28 +55,6 @@ class Perguntas(admin.ModelAdmin):
     search_fields = ('pergunta',)
 
 
-    def adicionar_pergunta(self, request, queryset):
-        if request.method == 'POST':
-            form = AdicionarPerguntas(request.POST)
-            
-            if form.is_valid():
-                pergunta = form.cleaned_data['pergunta']
-
-                novo_formulario =  Formulario.objects.create(pergunta = pergunta)
-                novo_formulario.save()
-                self.message_user(request, 'Pergunta adicionada com sucesso!')
-                return HttpResponseRedirect(request.get_full_path())
-            else:
-                form = AdicionarPerguntas()
-            
-            context = {
-                'form':form,
-                'title':'Adicionar Pergunta'
-            }
-
-            return render(request, 'dashboard.html', context)
-
-
 
 
 

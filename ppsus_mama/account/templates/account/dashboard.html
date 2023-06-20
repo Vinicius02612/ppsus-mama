@@ -1,24 +1,16 @@
 {% extends 'base.html'%}
-
 {%block conteudo%}
-
     {% for message in messages %}
         <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
     {% endfor %}
     <h1>Bem vindo {{user.first_name}} {{user.last_name}}</h1>
-    
     <section>
         <h4>
             Olá este sistema visa auxiliar na prevenção do cançer de mama por meio de um formulario.
         </h4>
     </section>
 </div>
-    <h2>{{ title }}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Adicionar</button>
-    </form>
+    <a href="{% url 'adicionarPergunta'%}" class="btn-danger p-3" >Adicionar uma pergunta ao Formulario</a>   
     <div class="table-responsive mt-5">
         <table class="table table-sm">
                 <thead class="thead-dark w-10">
