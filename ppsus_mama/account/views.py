@@ -4,7 +4,7 @@ from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from .models import Form
+from .models import Formulario
 
 
 # Create your views here.
@@ -80,10 +80,15 @@ def login(request):
 
 @login_required(redirect_field_name='login')
 def dashboard(request):
-    forms = Form.objects.order_by('id')
+    forms = Formulario.objects.order_by('id')
     return render(request, 'account/dashboard.html', {
         'form': forms
     })
+
+
+def adicionar_novapergunta(request):
+    titulo = request.POST.get('titulo')
+    
 
 @login_required(redirect_field_name='login')
 def logout(request):

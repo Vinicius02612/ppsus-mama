@@ -1,11 +1,11 @@
 from django.db import models
-from forms.models import Form
+from forms.models import Formulario
 from django import forms
 # Create your models here.
 
 
 class ModForms(forms.ModelForm):
     class Meta:
-        model = Form
+        model = Formulario
         exclude = ()
 

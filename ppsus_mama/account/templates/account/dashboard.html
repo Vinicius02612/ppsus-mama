@@ -13,7 +13,12 @@
         </h4>
     </section>
 </div>
-
+    <h2>{{ title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Adicionar</button>
+    </form>
     <div class="table-responsive mt-5">
         <table class="table table-sm">
                 <thead class="thead-dark w-10">
@@ -24,16 +29,18 @@
                         <th class="text-nowrap w-100 p-3 ">sexo</th>
                         <th class="text-nowrap w-100 p-3 ">Idade do paciente</th>
                         <th class="text-nowrap w-100 p-3 ">Teste genético apresenta mutação do tipo</th>
-                        <th class="text-nowrap w-100 p-3 ">Historico Pessoal </th>
-                        <th class="text-nowrap w-100 p-3 ">Tem historico</th>
+                        <th class="text-nowrap w-100 p-3 ">Historico Pessoal de cancer de mama bilateral</th>
+                        <th class="text-nowrap w-100 p-3 ">Tem historico pessoal de cancer de ovario </th>
                         <th class="text-nowrap w-100 p-3 ">Tem câncer de mama?</th>
                         <th class="text-nowrap w-100 p-3 ">Se tem câncer de mama, qual tipo histologico</th>
                         <th class="text-nowrap w-100 p-3 ">Faixa de idade do diagnostico de câncer de mama</th>
                         <th class="text-nowrap w-100 p-3 ">Tipo molecular de câncer de mama</th>
                         <th class="text-nowrap w-100 p-3 ">Se tem câncer, qual o tamanho do tumor</th>
-                        <th class="text-nowrap w-100 p-3 ">Quantidade parentes de primeiro grau com câncer de mama</th>
-                        <th class="text-nowrap w-100 p-3 ">Parentes de segundo grau ou mais distante com cancer de mama ou ovario < 50 anos</th>
-                        <th class="text-nowrap w-100 p-3 ">Parentes de primeiro grau com</th>
+                        <!-- Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:* -->
+                        <th class="text-nowrap w-100 p-3 ">Quantidade de parentes de primeiro grau com câncer de mama</th>
+                        <th class="text-nowrap w-100 p-3 "> Quantidade de parentes de primeiro grau ou mais distante com câncer de mama ou ovario com idade  < 50 anos</th>
+                        <th class="text-nowrap w-100 p-3 ">Tem parentes de segundo grau ou mais distante com cancer de mama ou ovario  com idade< 50 anos</th>
+                        <th class="text-nowrap w-100 p-3 ">Tem parentes de primeiro grau com</th>
                         <th class="text-nowrap w-100 p-3 ">Ascendencia Judia Ashkenazi</th>
                     </tr>
                 </thead>

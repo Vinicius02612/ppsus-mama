@@ -4,11 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
 
-from .models import ModFormsTo,Form
+from .models import ModFormsTo,Formulario
 
 @login_required(redirect_field_name='login')
 def forms(request):
-    if request.method != 'POST':  
+    if request.method != 'POST':
         formTo = ModFormsTo()
         return render(request, "forms/forms.html", {'formTo':formTo})
     
@@ -26,7 +26,7 @@ def forms(request):
 @login_required(redirect_field_name='login')
 def report(request, id_forms):
 
-    respostas = get_object_or_404(Form, id = id_forms)
+    respostas = get_object_or_404(Formulario, id = id_forms)
     return render(request, 'forms/report.html',{'resp': respostas})
 
     
@@ -34,15 +34,13 @@ def report(request, id_forms):
 def results(request):
     
     return render(request, 'forms/results.html')
-
-
-
-    
-
-    
         
 
+def adicionar_novapergunta(request):
+    titulo = request.POST.get('titulo')
+    tipo = request.POST.get('tipo')
+    opcoes = request.POST.get('opcoes')
 
-   
-    
+
+
 
