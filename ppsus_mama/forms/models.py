@@ -4,7 +4,7 @@ from django import forms
 # Create your models here.
 
 """ Furmulario"""
-class Form(models.Model):
+class Formulario(models.Model):
     nomePaciente = models.CharField("Nome do paciente:",max_length=255, blank=True)
     sobrenome = models.CharField("Sobrenome:",max_length=255, blank=True)
     nomeclinica =  models.CharField("Nome da clinica:",max_length=255, blank=True)
@@ -16,7 +16,38 @@ class Form(models.Model):
     sexo = models.CharField("Sexo",  max_length=2,choices=tuplesexo , blank=False)
     idadepaciente =  models.CharField("Idade do paciente:",max_length=3, blank=False)
 
-    
+    tupleOpcao = (
+        ("SIM", "SIM"),
+        ("NAO", "NAO"),
+    )
+    temcancer = models.CharField("Tem câncer de mama?",max_length=3, choices=tupleOpcao)
+
+    tupleCancer = (
+        ("Carcinoma ductal insitu", "Carcinoma ductal insitu"),
+        ("Carcinoma não epecial", "Carcinoma não epecial"),
+        ("Lobural", "Lobural"),
+        ("Medular", "Medular"),
+        ("Metaplatico", "Metaplatico"),
+        ("Mucinoso", "Mucinoso"),
+        ("Não tem cancer de mama", "Não tem cancer de mama"),
+    )
+
+    cancer_mama = models.CharField("Se tem câncer de mama, qual tipo histologico?",max_length=25, choices=tupleCancer)
+
+    tupleIdadeCancer = (
+        ("Maior que 60 anos","Maior que 60 anos"),
+        ("Entre 55 e 60 anos", "Entre 55 e 60 anos"),
+        ("Entre 45 e 55 anos", "Entre 45 e 55 anos"),
+        ("Entre 35 e 45 anos", "Entre 35 e 45 anos"),
+        ("Entre 30 e 35 anos", "Entre 30 e 35 anos"),
+        ("Menor que 30 anos", "Menor que 30 anos"),
+        ("Menor que 30 anos", "Menor que 30 anos"),
+        ("Sem diagnostico", "Sem diagnostico"),  
+
+
+    )
+    idade_diagnostico =  models.CharField("Faixa de idade do diagnostico de câncer de mama:",max_length=25, choices=tupleIdadeCancer)
+
     tupleMutacao = (
         ("BRCA1", "BRCA1"),
         ("BRCA2", "BRCA2"),
@@ -31,39 +62,10 @@ class Form(models.Model):
     )
     mutacaoGenetica =  models.CharField("Teste genético apresenta mutação do tipo:",max_length=22, choices=tupleMutacao)
 
-    tupleOpcao = (
-        ("SIM", "SIM"),
-        ("NAO", "NAO"),
-    )
+
 
     opc_bilateral = models.CharField("Historico Pessoal de cancer de mama bilateral:",max_length=3, choices=tupleOpcao)
     opc_ovario = models.CharField("Tem historico Pessoal de cançer de ovario?",max_length=3, choices=tupleOpcao)
-
-    temcancer = models.CharField("Tem câncer de mama?",max_length=3, choices=tupleOpcao)
-
-    tupleCancer = (
-        ("Carcinoma ductal insitu", "Carcinoma ductal insitu"),
-        ("Carcinoma não epecial", "Carcinoma não epecial"),
-        ("Lobural", "Lobural"),
-        ("Medular", "Medular"),
-        ("Metaplatico", "Metaplatico"),
-        ("Mucinoso", "Mucinoso"),
-        ("Não tem cancer de mama", "Não tem cancer de mama"),
-
-    )
-
-    cancer_mama = models.CharField("Se tem câncer de mama, qual tipo histologico?",max_length=25, choices=tupleCancer)
-
-    tupleIdadeCancer = (
-        ("Maior que 60 anos","Maior que 60 anos"),
-        ("Entre 55 e 60 anos", "Entre 55 e 60 anos"),
-        ("Entre 45 e 55 anos", "Entre 45 e 55 anos"),
-        ("Entre 35 e 45 anos", "Entre 35 e 45 anos"),
-        ("Entre 30 e 35 anos", "Entre 30 e 35 anos"),
-        ("Menor que 30 anos", "Menor que 30 anos"),
-        
-    )
-    idade_diagnostico =  models.CharField("Faixa de idade do diagnostico de câncer de mama:",max_length=25, choices=tupleIdadeCancer)
 
     tupleTipoMolecular = (
         ("Luminal", "Luminal"),
@@ -95,10 +97,10 @@ class Form(models.Model):
     )
     qtd_parent_1 = models.CharField("Quantidade parentes de primeiro grau com câncer de mama:",max_length=12, choices=tupleQtdParente)
     
-    qtd_parent_2 = models.CharField("Quantidade de parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=12, choices=tupleQtdParente)
+    qtd_parent_2 = models.CharField(" Quantidade de parentes de primeiro grau ou mais distante com câncer de mama ou ovario com idade  < 50 anos",max_length=12, choices=tupleQtdParente)
     
 
-    parent_seg_grau =  models.CharField(" Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=12, choices=tupleQtdParente)
+    parent_seg_grau =  models.CharField("Quantidade parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=12, choices=tupleQtdParente)
 
 
     tupleParentePrimeiroGrau= (
@@ -121,10 +123,16 @@ class Form(models.Model):
 
 
 
+class AdicionarPerguntas(forms.Form):
+    titulo =  forms.CharField(label='Titulo da Pergunta', max_length=255)
+    
+    def __str__(self) -> str:
+        return self.titulo
+
 
 class ModFormsTo(forms.ModelForm):
     class Meta:
-        model = Form
+        model = Formulario
         exclude =()
 
 
