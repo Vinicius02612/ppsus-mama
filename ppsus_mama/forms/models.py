@@ -132,7 +132,6 @@ class AdicionarPerguntas(forms.Form):
 
 
 dados = AdicionarPerguntas()
-print(dados)
 
 class ModFormsTo(forms.ModelForm):
     class Meta:

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
+from django.http import Http404,HttpResponseRedirect,HttpResponse
 
 
 from .models import ModFormsTo,Formulario,AdicionarPerguntas
@@ -50,8 +50,8 @@ def adicionarPergunta(request):
         if not newPergunta.is_valid():
             messages.error(request, "Erro ao enviar formulario, verifique os campos.")
             newPergunta =  AdicionarPerguntas(request.POST)
-            return render(request, "forms/adicionaPergunta.html", {'pergunta':newPergunta})
-
+        return HttpResponse("adicionarPergunta.html")
+   
 
         
 

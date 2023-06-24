@@ -35,7 +35,7 @@ def cadastro(request):
         return render(request, 'account/cadastro.html')
 
     if senha != retrysenha:
-        messages.error(request, 'senha não são iguais!')
+        messages.error(request, 'As senha não são igauis!')
         return render(request, 'account/cadastro.html')
 
     if User.objects.filter(username = usuario).exists():

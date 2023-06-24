@@ -20,12 +20,12 @@
                         <th class="text-nowrap w-100 p-3 ">Nome da Clinica</th>
                         <th class="text-nowrap w-100 p-3 ">sexo</th>
                         <th class="text-nowrap w-100 p-3 ">Idade do paciente</th>
-                        <th class="text-nowrap w-100 p-3 ">Teste genético apresenta mutação do tipo</th>
-                        <th class="text-nowrap w-100 p-3 ">Historico Pessoal de cancer de mama bilateral</th>
-                        <th class="text-nowrap w-100 p-3 ">Tem historico pessoal de cancer de ovario </th>
                         <th class="text-nowrap w-100 p-3 ">Tem câncer de mama?</th>
                         <th class="text-nowrap w-100 p-3 ">Se tem câncer de mama, qual tipo histologico</th>
                         <th class="text-nowrap w-100 p-3 ">Faixa de idade do diagnostico de câncer de mama</th>
+                        <th class="text-nowrap w-100 p-3 ">Teste genético apresenta mutação do tipo</th>
+                        <th class="text-nowrap w-100 p-3 ">Historico Pessoal de cancer de mama bilateral</th>
+                        <th class="text-nowrap w-100 p-3 ">Tem historico pessoal de cancer de ovario </th>
                         <th class="text-nowrap w-100 p-3 ">Tipo molecular de câncer de mama</th>
                         <th class="text-nowrap w-100 p-3 ">Se tem câncer, qual o tamanho do tumor</th>
                         <!-- Parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:* -->
@@ -44,18 +44,18 @@
                         <td class="text-center">{{question.nomeclinica}}</td>
                         <td class="text-center">{{question.sexo}}</td>
                         <td class="text-center">{{question.idadepaciente}}</td>
-                        <td class="text-center">{{question.mutacaoGenetica}}</td>
-                        <td class="text-center">{{question.opc_bilateral}}</td>
-                        <td class="text-center">{{question.opc_ovario}}</td>
                         <td class="text-center">{{question.temcancer}}</td>
                         <td class="text-center">{{question.cancer_mama}}</td>
                         <td class="text-center">{{question.idade_diagnostico}}</td>
+                        <td class="text-center">{{question.mutacaoGenetica}}</td>
+                        <td class="text-center">{{question.opc_bilateral}}</td>
+                        <td class="text-center">{{question.opc_ovario}}</td>
                         <td class="text-center">{{question.tipo_molecular}}</td>
                         <td class="text-center">{{question.tam_cancer}}</td>
                         <td class="text-center">{{question.qtd_parent_1}}</td>
                         <td class="text-center">{{question.qtd_parent_2}}</td>
                         <td class="text-center">{{question.parent_seg_grau}}</td>
-                        <td class="text-center">{{question.parent_pri_grau}}</td>
+                        <td class="text-center">{{question.parent_seg_grau}}</td>
                         <td class="text-center">{{question.asc_judia}}</td>
                     </tr>
                 {% endfor %}

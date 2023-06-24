@@ -19,7 +19,6 @@ class Perguntas(admin.ModelAdmin):
         'idade_diagnostico',
         'mutacaoGenetica',
         'opc_bilateral',
-        'idade_diagnostico',
         'opc_ovario',
         'tipo_molecular',
         'tam_cancer',
@@ -30,19 +29,20 @@ class Perguntas(admin.ModelAdmin):
         'asc_judia'
     ]
 
-    fields = [
-       'id',
+    """ fields = [
+        'id',
         'nomePaciente',
         'sobrenome',
         'nomeclinica',
         'sexo',
         'idadepaciente',
-        'mutacaoGenetica',
-        'opc_bilateral',
-        'opc_ovario',
         'temcancer',
         'cancer_mama',
         'idade_diagnostico',
+        'mutacaoGenetica',
+        'opc_bilateral',
+        'idade_diagnostico',
+        'opc_ovario',
         'tipo_molecular',
         'tam_cancer',
         'qtd_parent_1',
@@ -50,12 +50,9 @@ class Perguntas(admin.ModelAdmin):
         'parent_seg_grau',
         'parent_pri_grau',
         'asc_judia'
-    ]
+    ] """
 
     search_fields = ('pergunta',)
-
-
-
 
 
 admin.site.register(Formulario, Perguntas)
