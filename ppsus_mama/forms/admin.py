@@ -19,7 +19,6 @@ class Perguntas(admin.ModelAdmin):
         'idade_diagnostico',
         'mutacaoGenetica',
         'opc_bilateral',
-        'idade_diagnostico',
         'opc_ovario',
         'tipo_molecular',
         'tam_cancer',
@@ -30,19 +29,20 @@ class Perguntas(admin.ModelAdmin):
         'asc_judia'
     ]
 
-    fields = [
-       'id',
+    """ fields = [
+        'id',
         'nomePaciente',
         'sobrenome',
         'nomeclinica',
         'sexo',
         'idadepaciente',
-        'mutacaoGenetica',
-        'opc_bilateral',
-        'opc_ovario',
         'temcancer',
         'cancer_mama',
         'idade_diagnostico',
+        'mutacaoGenetica',
+        'opc_bilateral',
+        'idade_diagnostico',
+        'opc_ovario',
         'tipo_molecular',
         'tam_cancer',
         'qtd_parent_1',
@@ -50,34 +50,9 @@ class Perguntas(admin.ModelAdmin):
         'parent_seg_grau',
         'parent_pri_grau',
         'asc_judia'
-    ]
+    ] """
 
     search_fields = ('pergunta',)
-
-
-    def adicionar_pergunta(self, request, queryset):
-        if request.method == 'POST':
-            form = AdicionarPerguntas(request.POST)
-            
-            if form.is_valid():
-                pergunta = form.cleaned_data['pergunta']
-
-                novo_formulario =  Formulario.objects.create(pergunta = pergunta)
-                novo_formulario.save()
-                self.message_user(request, 'Pergunta adicionada com sucesso!')
-                return HttpResponseRedirect(request.get_full_path())
-            else:
-                form = AdicionarPerguntas()
-            
-            context = {
-                'form':form,
-                'title':'Adicionar Pergunta'
-            }
-
-            return render(request, 'dashboard.html', context)
-
-
-
 
 
 admin.site.register(Formulario, Perguntas)

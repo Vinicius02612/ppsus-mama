@@ -1,9 +1,6 @@
 {% extends 'base.html'%}
 {%block conteudo%}
 {% load crispy_forms_tags %} 
-
-
-
     <div class="area-info-forms">
         <div class="info-forms">
         <p class="justify">
@@ -16,7 +13,6 @@
         </p> 
         </div>    
     </div>
-
     <form action="{% url 'forms'%}" method="POST" enctype="multipart/form-data">
         <table class="table">
             {% csrf_token %}

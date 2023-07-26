@@ -35,7 +35,7 @@ def cadastro(request):
         return render(request, 'account/cadastro.html')
 
     if senha != retrysenha:
-        messages.error(request, 'senha não são iguais!')
+        messages.error(request, 'As senha não são igauis!')
         return render(request, 'account/cadastro.html')
 
     if User.objects.filter(username = usuario).exists():
@@ -81,14 +81,13 @@ def login(request):
 @login_required(redirect_field_name='login')
 def dashboard(request):
     forms = Formulario.objects.order_by('id')
-    return render(request, 'account/dashboard.html', {
-        'form': forms
-    })
+    return render(request, 'account/dashboard.html', {'form': forms})
 
 
-def adicionar_novapergunta(request):
-    titulo = request.POST.get('titulo')
-    
+def adicionar_pergunta(self, request, queryset):
+        pass
+
+      
 
 @login_required(redirect_field_name='login')
 def logout(request):

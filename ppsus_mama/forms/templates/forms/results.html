@@ -11,12 +11,6 @@
                 <div class="alert {{ message.tags }} " role="alert">{{ message }}</div>
             {% endfor %}
         {% endif %}
-        <table class="table">
-            <tr>
-                {{ formTo }} 
-            </tr>
-        </table>
-        <br><br><br>
         <h2 class="text-center">Resultado da previsão de mutação BRCA1/BRCA2</h2>
         <table class="table">
             <thead class="thead-dark">
@@ -41,10 +35,19 @@
         </table>
     </div>
     <br>
-    <div class="row container pl-5">
-        <a href="{% url 'forms'%}"><button class="btn btn-lg btn-danger  m-2" type="submit">Voltar</button></a>
-        <div class="col-7"></div>
-        <a href="{% url 'dashboard'%}"><button class="btn btn-success ">Ir para Dashboard</button></a>
-    </div>
+    
 </div>
+<h2 class="text-center">Sua resposta</h2>
+
+<table class="table">
+            <tr>
+                {{ formTo }} 
+            </tr>
+</table>
+        <br><br><br>
+        <div class="row container pl-5">
+            <a href="{% url 'forms'%}"><button class="btn btn-lg btn-danger  m-2" type="submit">Voltar</button></a>
+            <div class="col-7"></div>
+            <a href="{% url 'dashboard'%}"><button class="btn btn-success ">Ir para Dashboard</button></a>
+        </div>
 {%endblock%}

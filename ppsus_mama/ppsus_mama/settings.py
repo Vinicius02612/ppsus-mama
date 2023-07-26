@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'crispy_forms',
     'crispy_bootstrap4',
- 
+    'gunicorn'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
