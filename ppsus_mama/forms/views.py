@@ -17,7 +17,6 @@ def forms(request):
         messages.error(request, "Erro ao enviar formulario, verifique os campos.")
         formTo =  ModFormsTo(request.POST)
         return render(request, "forms/forms.html", {'formTo':formTo})
-    
     formTo.save()
     messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
     return render(request, "forms/results.html", {'formTo':formTo})
@@ -32,7 +31,6 @@ def report(request, id_forms):
     
 @login_required(redirect_field_name='login')
 def results(request):
-    
     return render(request, 'forms/results.html')
         
 """ 
@@ -44,13 +42,13 @@ def adicionar_novapergunta(request):
 def adicionarPergunta(request):
         if request.method != 'POST':
             newPergunta = AdicionarPerguntas()
-            return render(request, 'forms/adicionaPergunta.html',{'pergunta': newPergunta})
+            return render(request, 'forms/adicionarPergunta.html',{'pergunta': newPergunta})
 
         newPergunta = AdicionarPerguntas(request.POST)
         if not newPergunta.is_valid():
             messages.error(request, "Erro ao enviar formulario, verifique os campos.")
             newPergunta =  AdicionarPerguntas(request.POST)
-        return HttpResponse("adicionarPergunta.html")
+        return render(request, "forms/adicionarPergunta.html")
    
 
         

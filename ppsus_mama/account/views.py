@@ -81,9 +81,7 @@ def login(request):
 @login_required(redirect_field_name='login')
 def dashboard(request):
     forms = Formulario.objects.order_by('id')
-    return render(request, 'account/dashboard.html', {
-        'form': forms
-    })
+    return render(request, 'account/dashboard.html', {'form': forms})
 
 
 def adicionar_pergunta(self, request, queryset):
