@@ -4,20 +4,25 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404,HttpResponseRedirect,HttpResponse
 
 
-from .models import ModFormsTo,Formulario,AdicionarPerguntas
+from .models import ModFormsTo
+from .forms import Questions
 
 @login_required(redirect_field_name='login')
 def forms(request):
     if request.method != 'POST':
-        formTo = ModFormsTo()
+        formTo = Questions()
         return render(request, "forms/forms.html", {'formTo':formTo})
     
-    formTo = ModFormsTo(request.POST)
+    formTo = Questions(request.POST)
     if not formTo.is_valid():
-        messages.error(request, "Erro ao enviar formulario, verifique os campos.")
-        formTo =  ModFormsTo(request.POST)
+
+        messages.error(request, "Erro ao enviar Questions, verifique os campos.")
+        formTo =  Questions(request.POST)
         return render(request, "forms/forms.html", {'formTo':formTo})
-    formTo.save()
+   
+    for i , j in formTo.cleaned_data.items():
+        print(f'{i} => {j}')
+        formTo = Questions()
     messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
     return render(request, "forms/results.html", {'formTo':formTo})
 
@@ -25,13 +30,18 @@ def forms(request):
 @login_required(redirect_field_name='login')
 def report(request, id_forms):
 
-    respostas = get_object_or_404(Formulario, id = id_forms)
+    respostas = get_object_or_404(Questions, id = id_forms)
     return render(request, 'forms/report.html',{'resp': respostas})
 
     
 @login_required(redirect_field_name='login')
 def results(request):
-    return render(request, 'forms/results.html')
+    
+
+    resp = Questions()
+
+
+    return render(request, 'forms/results.html', {'resp':resp})
         
 """ 
 def adicionar_novapergunta(request):
@@ -39,7 +49,7 @@ def adicionar_novapergunta(request):
     opcoes = request.POST.get('opcoes')
  """
 
-def adicionarPergunta(request):
+""" def adicionarPergunta(request):
         if request.method != 'POST':
             newPergunta = AdicionarPerguntas()
             return render(request, 'forms/adicionarPergunta.html',{'pergunta': newPergunta})
@@ -52,7 +62,7 @@ def adicionarPergunta(request):
    
 
         
-
+ """
 
 
  

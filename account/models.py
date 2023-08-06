@@ -1,5 +1,5 @@
 from django.db import models
-from forms.models import Formulario,AdicionarPerguntas
+from forms.models import Formulario
 from django import forms
 # Create your models here.
 
