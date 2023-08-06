@@ -123,9 +123,5 @@ class Questions(forms.Form):
 
     asc_judia =  forms.ChoiceField(label="Ascendencia Judia Ashkenazi:",choices=tupleOpcao)
 
-    def clean_temCancer(self):
-        temCancer = self.cleaned_data.get('temcancer')
-        cancerMama =  self.cleaned_data('cancer_mama')
-
         
 
