@@ -1,16 +1,9 @@
-from typing import Any, Mapping, Optional, Type, Union
 from django.db import models
-
 from django import forms
-from django.forms.utils import ErrorList
+from .forms import Questions
+
 # Create your models here.
 
-#ver como criar campos de select em forma de radios nas questões de sim ou não
-class AdicionarPerguntas(forms.Form):
-    titulo =  forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label='Titulo da Pergunta', max_length=255)
-    choiceTipo = (('Select','Select'),
-                  ('Texto','Texto'))
-    tipo = forms.ChoiceField( choices=choiceTipo, required=False, widget=forms.Select(attrs={'class':'form-control'}),label='Tipo da pergunta:')
 
 """ Furmulario"""
 class Formulario(models.Model):
@@ -127,7 +120,7 @@ class Formulario(models.Model):
     parent_pri_grau =  models.CharField("Parentes de primeiro grau com :",max_length=25,choices=tupleParentePrimeiroGrau)
 
     asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=12, choices=tupleOpcao)
-    
+
     def __str__(self) -> str:
         return self.nomePaciente
 
@@ -137,6 +130,7 @@ class ModFormsTo(forms.ModelForm):
     class Meta:
         model = Formulario
         exclude =()
+        
 
 
     
