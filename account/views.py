@@ -66,8 +66,6 @@ def login(request):
 
     usuario = request.POST.get('usuario')
     senha = request.POST.get('senha')
-
-
     user = auth.authenticate(request, username=usuario, password=senha)
 
     if not user:
@@ -84,8 +82,11 @@ def dashboard(request):
     return render(request, 'account/dashboard.html', {'form': forms})
 
 
-def adicionar_pergunta(self, request, queryset):
-        pass
+def viewdata(request):
+    forms = Formulario.objects.order_by('id')
+    return render(request, 'account/visualizardados.html', {'form': forms})
+
+        
 
       
 
