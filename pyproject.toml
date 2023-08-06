@@ -1,2 +1,2 @@
 [tool.poetry.dependencies]
-python = "^3.2"
+python = "^4.0"
