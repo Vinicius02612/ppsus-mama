@@ -1,8 +1,9 @@
 {% extends 'base.html'%}
 {%block  conteudo %}
+{% load crispy_forms_tags %} 
 </h2>Adicionar pergunta ao formulario</h2>
-{% comment %} <hr>
-<form class="adicionarPergunta"  method="post" action="{% url 'adicionarPergunta' %}">
+<hr>
+<form class="adicionarPergunta"  method="post" action="{% url 'create_question' %}">
     {% if messages %}
     <br><br><br>
       {% for message in messages %}
@@ -13,7 +14,7 @@
     <br>
     <br>
     <br>
-    {{ pergunta.as_p }}
+    {{ newpergunta | crispy }}
     <button type="submit" class="btn btn-primary">Adicionar</button>
   </form>
-{% endblock %} {% endcomment %}
+{% endblock %}
