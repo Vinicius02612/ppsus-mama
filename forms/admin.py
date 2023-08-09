@@ -1,10 +1,27 @@
 from django.contrib import admin
 # Register your models here.
-from .models import Formulario
+
+from .models import Pergunta, Resposta, Formulario
+
+class FormPergunta(admin.ModelAdmin):
+    list_display = [
+            'titulo',
+            'peso',
+            'mostrar',
+        ]
+    list_editable = ['mostrar']
 
 
-           
-class Perguntas(admin.ModelAdmin):
+class FormResposta(admin.ModelAdmin):
+    list_display=[
+        'pergunta',
+        'resposta',
+        'mostrar',
+    ]
+    list_editable = ['mostrar']
+
+class Form(admin.ModelAdmin):
+
     list_display = [
         'id',
         'nomePaciente',
@@ -27,5 +44,11 @@ class Perguntas(admin.ModelAdmin):
         'asc_judia',
     ]
 
+admin.site.register(Pergunta,FormPergunta)
+admin.site.register(Resposta, FormResposta)
+admin.site.register(Formulario, Form)
 
-admin.site.register(Formulario, Perguntas)
+""" 
+
+
+ """
