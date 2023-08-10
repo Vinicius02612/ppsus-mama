@@ -26,23 +26,22 @@ load_dotenv(BASE_DIR / '.env')
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-""" SECRET_KEY = 'django-insecure-wj=!2)n*x9!dfq*8xzt*8njb2i7435=*ic(@h04#g$e$xb=lq5' """
+SECRET_KEY = 'django-insecure-wj=!2)n*x9!dfq*8xzt*8njb2i7435=*ic(@h04#g$e$xb=lq5'
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+""" SECRET_KEY = os.getenv('SECRET_KEY') """
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
 
+""" DEBUG = True """
+
 DEBUG = os.getenv('DEBUG','0').lower() in ['true','t','1']
 
 """ 127.0.0.1 """
-""" ALLOWED_HOSTS = ['127.0.0.1'] """
+""" ALLOWED_HOSTS = ['127.0.0.1']"""
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
-
-
-
 
 # Application definition
 
@@ -99,14 +98,17 @@ WSGI_APPLICATION = 'ppsus_mama.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
-}    
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600), 
+   
+}
+    
 """
-'default': {
+ 'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600), 
+ 'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
     }
-"""
+ """
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

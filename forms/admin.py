@@ -1,12 +1,27 @@
 from django.contrib import admin
-from django.http import Http404,HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
-
 # Register your models here.
-from .models import Formulario,ModFormsTo,AdicionarPerguntas
 
-           
-class Perguntas(admin.ModelAdmin):
+from .models import Pergunta, Resposta, Formulario
+
+class FormPergunta(admin.ModelAdmin):
+    list_display = [
+            'titulo',
+            'peso',
+            'mostrar',
+        ]
+    list_editable = ['mostrar']
+
+
+class FormResposta(admin.ModelAdmin):
+    list_display=[
+        'pergunta',
+        'resposta',
+        'mostrar',
+    ]
+    list_editable = ['mostrar']
+
+class Form(admin.ModelAdmin):
+
     list_display = [
         'id',
         'nomePaciente',
@@ -26,33 +41,14 @@ class Perguntas(admin.ModelAdmin):
         'qtd_parent_2',
         'parent_seg_grau',
         'parent_pri_grau',
-        'asc_judia'
+        'asc_judia',
     ]
 
-    """ fields = [
-        'id',
-        'nomePaciente',
-        'sobrenome',
-        'nomeclinica',
-        'sexo',
-        'idadepaciente',
-        'temcancer',
-        'cancer_mama',
-        'idade_diagnostico',
-        'mutacaoGenetica',
-        'opc_bilateral',
-        'idade_diagnostico',
-        'opc_ovario',
-        'tipo_molecular',
-        'tam_cancer',
-        'qtd_parent_1',
-        'qtd_parent_2',
-        'parent_seg_grau',
-        'parent_pri_grau',
-        'asc_judia'
-    ] """
+admin.site.register(Pergunta,FormPergunta)
+admin.site.register(Resposta, FormResposta)
+admin.site.register(Formulario, Form)
 
-    search_fields = ('pergunta',)
+""" 
 
 
-admin.site.register(Formulario, Perguntas)
+ """

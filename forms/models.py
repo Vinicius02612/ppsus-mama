@@ -1,19 +1,41 @@
-from typing import Any, Mapping, Optional, Type, Union
 from django.db import models
-
 from django import forms
-from django.forms.utils import ErrorList
-# Create your models here.
 
-#ver como criar campos de select em forma de radios nas questões de sim ou não
-class AdicionarPerguntas(forms.Form):
-    titulo =  forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label='Titulo da Pergunta', max_length=255)
-    choiceTipo = (('Select','Select'),
-                  ('Texto','Texto'))
-    tipo = forms.ChoiceField( choices=choiceTipo, required=False, widget=forms.Select(attrs={'class':'form-control'}),label='Tipo da pergunta:')
+
+
+class Pergunta(models.Model):
+    titulo = models.CharField(max_length=100, primary_key=True)
+    peso = models.IntegerField()
+    mostrar = models.BooleanField(default=True)
+
+
+    def __str__(self) -> str:
+        return self.titulo
+    
+class ModPergunta(forms.ModelForm):
+    class Meta:
+        model = Pergunta
+        fields = ("titulo","peso")
+
+
+class Resposta(models.Model):
+    pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE)
+    resposta = models.CharField(max_length=100)
+    mostrar = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return self.resposta
+
+class ModResposta(forms.ModelForm):
+    
+    class Meta:
+        model = Resposta
+        fields = ("pergunta","resposta")
+
 
 """ Furmulario"""
 class Formulario(models.Model):
+
     
     nomePaciente = models.CharField("Nome do paciente:",max_length=255, blank=True)
     sobrenome = models.CharField("Sobrenome:",max_length=255, blank=True)
@@ -53,8 +75,6 @@ class Formulario(models.Model):
         ("Menor que 30 anos", "Menor que 30 anos"),
         ("Menor que 30 anos", "Menor que 30 anos"),
         ("Sem diagnostico", "Sem diagnostico"),  
-
-
     )
     idade_diagnostico =  models.CharField("Faixa de idade do diagnostico de câncer de mama:",max_length=25, choices=tupleIdadeCancer)
 
@@ -68,12 +88,8 @@ class Formulario(models.Model):
         ("PALB2","PALB2"),
         ("VUS", "VUS"),
         ("NÃO APRESENTA MUTAÇÃO", "NÃO APRESENTA MUTAÇÃO"),
-
     )
     mutacaoGenetica =  models.CharField("Teste genético apresenta mutação do tipo:",max_length=22, choices=tupleMutacao)
-
-
-
     opc_bilateral = models.CharField("Historico Pessoal de cancer de mama bilateral:",max_length=3, choices=tupleOpcao)
     opc_ovario = models.CharField("Tem historico Pessoal de cançer de ovario?",max_length=3, choices=tupleOpcao)
 
@@ -83,7 +99,6 @@ class Formulario(models.Model):
         ("HEr2", "HEr2"),
         ("Triplo Negativo", "Triplo Negativo"),
         ("Não tem cancer de mama", "Não tem cancer de mama"),
-
     )
 
     tipo_molecular = models.CharField("Tipo molecular de câncer de mama:",max_length=23, choices=tupleTipoMolecular)
@@ -95,7 +110,6 @@ class Formulario(models.Model):
         ("T3", "T3"),
         ("T4", "T4"),
         ("Não tem cancer de mama", "Não tem cancer de mama"),
-
     )
     tam_cancer = models.CharField("Se tem câncer, qual o tamanho do tumor:",max_length=23,choices=tupleTamanhoDoCancer)
     
@@ -106,10 +120,7 @@ class Formulario(models.Model):
         ("Desconhece", "Desconhece"),
     )
     qtd_parent_1 = models.CharField("Quantidade parentes de primeiro grau com câncer de mama:",max_length=12, choices=tupleQtdParente)
-    
     qtd_parent_2 = models.CharField(" Quantidade de parentes de primeiro grau ou mais distante com câncer de mama ou ovario com idade  < 50 anos",max_length=12, choices=tupleQtdParente)
-    
-
     parent_seg_grau =  models.CharField("Quantidade parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",max_length=12, choices=tupleQtdParente)
 
 
@@ -122,12 +133,11 @@ class Formulario(models.Model):
         ("Dois ou mais itens", "Dois ou mais itens"),
         ("Nenhum", "Nenhum"),
         ("Desconhce","Desconhece")
-
     )
     parent_pri_grau =  models.CharField("Parentes de primeiro grau com :",max_length=25,choices=tupleParentePrimeiroGrau)
-
     asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=12, choices=tupleOpcao)
-    
+    nova_pergunta = models.CharField(max_length=100,blank=True)
+
     def __str__(self) -> str:
         return self.nomePaciente
 
@@ -136,7 +146,5 @@ class Formulario(models.Model):
 class ModFormsTo(forms.ModelForm):
     class Meta:
         model = Formulario
-        exclude =()
-
-
-    
+        exclude =('nova_pergunta',)
+        
