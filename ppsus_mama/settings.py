@@ -37,9 +37,9 @@ DEBUG = True
 """ DEBUG = os.getenv('DEBUG','0').lower() in ['true','t','1'] """
 
 """ 127.0.0.1 """
-ALLOWED_HOSTS = ['127.0.0.1']
+""" ALLOWED_HOSTS = ['127.0.0.1']"""
 
-""" ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ') """
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
 
 
