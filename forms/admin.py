@@ -1,7 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 
-from .models import Pergunta, Resposta, Formulario
+from .models import Pergunta
 
 class FormPergunta(admin.ModelAdmin):
     list_display = [
@@ -45,8 +45,7 @@ class Form(admin.ModelAdmin):
     ]
 
 admin.site.register(Pergunta,FormPergunta)
-admin.site.register(Resposta, FormResposta)
-admin.site.register(Formulario, Form)
+
 
 """ 
 

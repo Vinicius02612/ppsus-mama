@@ -6,6 +6,19 @@ from django import forms
 class Pergunta(models.Model):
     titulo = models.CharField(max_length=100, primary_key=True)
     peso = models.IntegerField()
+    tipo = models.CharField(max_length=100)
+    mostrar = models.BooleanField(default=True)
+    def __str__(self) -> str:
+        return self.titulo
+    
+class ModPergunta(forms.ModelForm):
+    class Meta:
+        model = Pergunta
+        fields = ("titulo","peso","tipo")
+""" 
+class Pergunta(models.Model):
+    titulo = models.CharField(max_length=100, primary_key=True)
+    peso = models.IntegerField()
     mostrar = models.BooleanField(default=True)
 
 
@@ -33,7 +46,7 @@ class ModResposta(forms.ModelForm):
         fields = ("pergunta","resposta")
 
 
-""" Furmulario"""
+
 class Formulario(models.Model):
 
     
@@ -148,3 +161,4 @@ class ModFormsTo(forms.ModelForm):
         model = Formulario
         exclude =('nova_pergunta',)
         
+ """

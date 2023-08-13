@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
-from .models import ModPergunta, ModResposta,ModFormsTo,Formulario
+from .models import ModPergunta
 
 def create_question(request):
     if request.method != 'POST':

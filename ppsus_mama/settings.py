@@ -26,9 +26,9 @@ load_dotenv(BASE_DIR / '.env')
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-""" SECRET_KEY = 'django-insecure-wj=!2)n*x9!dfq*8xzt*8njb2i7435=*ic(@h04#g$e$xb=lq5' """
+SECRET_KEY = 'django-insecure-wj=!2)n*x9!dfq*8xzt*8njb2i7435=*ic(@h04#g$e$xb=lq5'
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+""" SECRET_KEY = os.getenv('SECRET_KEY') """
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -40,9 +40,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1']
 
 """ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ') """
-
-
-
 
 # Application definition
 
@@ -57,7 +54,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'crispy_forms',
     'crispy_bootstrap4',
-    'gunicorn'
+    'gunicorn',
+    'rest_framework',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
@@ -168,4 +166,12 @@ MESSAGE_TAGS = {
     constants.DEBUG: 'alert-info',
     constants.SUCCESS:'alert-success',
     constants.INFO:'alert-info',
+}
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
