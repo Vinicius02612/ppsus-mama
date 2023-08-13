@@ -4,9 +4,9 @@ from django.contrib.auth.decorators import login_required
 
 
 
-from .models import ModPergunta, ModResposta,ModFormsTo,Formulario
+from .models import ModFormsTo,Formulario
 
-def create_question(request):
+""" def create_question(request):
     if request.method != 'POST':
         newpergunta = ModPergunta()
         return render(request, "forms/create_question.html",{'newpergunta':newpergunta})
@@ -18,7 +18,7 @@ def create_question(request):
         return render(request, "forms/create_question.html",{'newpergunta':newpergunta})
     newpergunta.save()
     messages.success(request, f'Pergunta salvo com sucesso')
-    return render(request, "forms/create_question.html", {'newpergunta':newpergunta})
+    return render(request, "forms/create_question.html", {'newpergunta':newpergunta}) """
 
 
 
@@ -33,6 +33,7 @@ def forms(request):
         messages.error(request, "Erro ao enviar Questions, verifique os campos.")
         formTo =  ModFormsTo(request.POST)
         return render(request, "forms/forms.html", {'formTo':formTo})
+    formTo.save()
     messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
     return render(request, "forms/results.html", {'formTo':formTo})
 
@@ -43,6 +44,7 @@ def results(request):
 
 @login_required(redirect_field_name='login')
 def viewdata(request):
-    formTo = ModFormsTo()
-    return render(request, 'forms/visualizardados.html',{'formTo':formTo})
+    form = Formulario.objects.all()
+
+    return render(request, 'forms/visualizardados.html',{'formTo':form})
 

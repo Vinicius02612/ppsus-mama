@@ -3,34 +3,6 @@ from django import forms
 
 
 
-class Pergunta(models.Model):
-    titulo = models.CharField(max_length=100, primary_key=True)
-    peso = models.IntegerField()
-    mostrar = models.BooleanField(default=True)
-
-
-    def __str__(self) -> str:
-        return self.titulo
-    
-class ModPergunta(forms.ModelForm):
-    class Meta:
-        model = Pergunta
-        fields = ("titulo","peso")
-
-
-class Resposta(models.Model):
-    pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE)
-    resposta = models.CharField(max_length=100)
-    mostrar = models.BooleanField(default=True)
-
-    def __str__(self) -> str:
-        return self.resposta
-
-class ModResposta(forms.ModelForm):
-    
-    class Meta:
-        model = Resposta
-        fields = ("pergunta","resposta")
 
 
 """ Furmulario"""
@@ -136,7 +108,7 @@ class Formulario(models.Model):
     )
     parent_pri_grau =  models.CharField("Parentes de primeiro grau com :",max_length=25,choices=tupleParentePrimeiroGrau)
     asc_judia =  models.CharField("Ascendencia Judia Ashkenazi:",max_length=12, choices=tupleOpcao)
-    nova_pergunta = models.CharField(max_length=100,blank=True)
+
 
     def __str__(self) -> str:
         return self.nomePaciente
@@ -146,5 +118,5 @@ class Formulario(models.Model):
 class ModFormsTo(forms.ModelForm):
     class Meta:
         model = Formulario
-        exclude =('nova_pergunta',)
+        fields = '__all__'
         
