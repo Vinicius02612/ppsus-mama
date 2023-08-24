@@ -53,11 +53,8 @@ def forms(request):
         qtd_parent_2 = formTo.cleaned_data['qtd_parent_2'],
         parent_seg_grau = formTo.cleaned_data['parent_seg_grau'],
         parent_pri_grau = formTo.cleaned_data['parent_pri_grau'],
-        asc_judia = formTo.cleaned_data['cancer_mama'],
+        asc_judia = formTo.cleaned_data['asc_judia'],
     )
-
-    print("tipo de resposta:",type(resposta))
-    
     nome = resposta.nomePaciente
     sobrenome = resposta.sobrenome 
     clinica = resposta.nomeclinica
@@ -70,15 +67,15 @@ def forms(request):
     opc_bilateral = resposta.opc_bilateral
     opc_ovario = resposta.opc_ovario
     tipo_molecular = resposta.tipo_molecular
-    tam_cancer = resposta.idadepaciente
+    tam_cancer = resposta.tam_cancer
     historicoFMasculino = resposta.historicoFMasculino
     qtd_parent_1 = resposta.qtd_parent_1
-    qtd_parent_2 = resposta.idadepaciente
-    parent_seg_grau = resposta.idadepaciente
-    parent_pri_grau = resposta.idadepaciente
-    asc_judia = resposta.idadepaciente
+    qtd_parent_2 = resposta.qtd_parent_2
+    parent_seg_grau = resposta.parent_seg_grau
+    parent_pri_grau = resposta.parent_pri_grau
+    asc_judia = resposta.asc_judia
 
-    calcular_predicao(sexo,idade,temcancer,cancer_mama, idade_diagnostico,mutacaoGenetica,opc_bilateral,opc_ovario,tipo_molecular,tam_cancer,historicoFMasculino,qtd_parent_1,qtd_parent_2,parent_seg_grau,parent_pri_grau,asc_judia)
+    pontuacao = calcular_predicao(sexo,idade,temcancer,cancer_mama, idade_diagnostico,mutacaoGenetica,opc_bilateral,opc_ovario,tipo_molecular,tam_cancer,historicoFMasculino,qtd_parent_1,qtd_parent_2,parent_seg_grau,parent_pri_grau,asc_judia)
     if not nome or not sobrenome or not clinica or  not idade:
         nome = "S/N"
         sobrenome = "S/N"
@@ -90,39 +87,15 @@ def forms(request):
         resposta.idadepaciente = idade
         resposta.save()
         messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
-        return render(request, "forms/results.html", {'formTo':formTo})
+        return render(request, "forms/results.html", {'formTo':formTo, 'pontos':pontuacao})
     else:
         messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
         resposta.save()
-        return render(request, "forms/results.html", {'formTo':formTo})
+        return render(request, "forms/results.html", {'formTo':formTo, 'pontos':pontuacao})
 
 
 @login_required(redirect_field_name='login')
 def results(request):
-    formTo = Questionario(
-        temcancer = formTo.cleaned_data['temcancer'],
-        cancer_mama = formTo.cleaned_data['cancer_mama'],
-        idade_diagnostico  = formTo.cleaned_data['idade_diagnostico'],
-        mutacaoGenetica = formTo.cleaned_data['mutacaoGenetica'],
-        opc_bilateral = formTo.cleaned_data['opc_bilateral'],
-        opc_ovario = formTo.cleaned_data['opc_ovario'],
-        tipo_molecular = formTo.cleaned_data['tipo_molecular'],
-        tam_cancer = formTo.cleaned_data['tam_cancer'],
-        historicoFMasculino = formTo.cleaned_data['historicoFMasculino'],
-        qtd_parent_1 = formTo.cleaned_data['qtd_parent_1'],
-        qtd_parent_2 = formTo.cleaned_data['qtd_parent_2'],
-        parent_seg_grau = formTo.cleaned_data['parent_seg_grau'],
-        parent_pri_grau = formTo.cleaned_data['parent_pri_grau'],
-        asc_judia = formTo.cleaned_data['cancer_mama'],)
-
-    nome = formTo.nomePaciente
-    sobrenome = formTo.sobrenome 
-    clinica = formTo.nomeclinica
-    idade = formTo.idadepaciente
-
-    print("Na view de resultado:",nome,sobrenome, idade)
- 
-
     return render(request, 'forms/results.html')
 
 @login_required(redirect_field_name='login')

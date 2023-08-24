@@ -35,13 +35,24 @@ class Questionario(forms.Form):
 
     cancer_mama = forms.ChoiceField(label="Se tem câncer de mama, qual tipo histologico?",choices=tupleCancer)
 
+    tupleTipoMolecular = (
+        ("",""),
+        ("Luminal", "Luminal"),
+        ("Luminal HEr2", "Luminal HEr2"),
+        ("HEr2", "HEr2"),
+        ("Triplo Negativo", "Triplo Negativo"),
+        ("Não tem cancer de mama", "Não tem cancer de mama"),
+    )
+
+    tipo_molecular = forms.ChoiceField(label="Tipo molecular de câncer de mama:",choices=tupleTipoMolecular)
+    
     tupleIdadeCancer = (
         ("",""),
         ("Maior que 60 anos","Maior que 60 anos"),
         ("Entre 55 e 60 anos", "Entre 55 e 60 anos"),
-        ("Entre 45 e 55 anos", "Entre 45 e 55 anos"),
-        ("Entre 35 e 45 anos", "Entre 35 e 45 anos"),
-        ("Entre 30 e 35 anos", "Entre 30 e 35 anos"),
+        ("Entre 45 e 54 anos", "Entre 45 e 54 anos"),
+        ("Entre 35 e 44 anos", "Entre 35 e 44 anos"),
+        ("Entre 30 e 34 anos", "Entre 30 e 34 anos"),
         ("Menor que 30 anos", "Menor que 30 anos"),
         ("Sem diagnostico", "Sem diagnostico"),  
     )
@@ -63,16 +74,7 @@ class Questionario(forms.Form):
     opc_bilateral = forms.ChoiceField(label="Historico Pessoal de cancer de mama bilateral:", choices=tupleOpcao)
     opc_ovario = forms.ChoiceField(label="Tem historico Pessoal de cançer de ovario?", choices=tupleOpcao)
 
-    tupleTipoMolecular = (
-        ("",""),
-        ("Luminal", "Luminal"),
-        ("Luminal HEr2", "Luminal HEr2"),
-        ("HEr2", "HEr2"),
-        ("Triplo Negativo", "Triplo Negativo"),
-        ("Não tem cancer de mama", "Não tem cancer de mama"),
-    )
-
-    tipo_molecular = forms.ChoiceField(label="Tipo molecular de câncer de mama:",choices=tupleTipoMolecular)
+    
 
     tupleTamanhoDoCancer = (
         ("",""),
@@ -100,17 +102,21 @@ class Questionario(forms.Form):
 
 
     tupleParentePrimeiroGrau= (
-        ("",""),
         ("Cancer de ovario", "Cancer de ovario"),
         ("Cancer de mama masculino", "Cancer de mama masculino"),
         ("Cancer de prostata", "Cancer de prostata"),
         ("Cancer bilateral de mama", "Cancer bilateral de mama"),
         ("Cancer de pancreas", "Cancer de pancreas"),
-        ("Dois ou mais itens", "Dois ou mais itens"),
         ("Nenhum", "Nenhum"),
-        ("Desconhce","Desconhece")
     )
-    parent_pri_grau =  forms.ChoiceField(label="Parentes de primeiro grau com :",choices=tupleParentePrimeiroGrau)
+    parent_pri_grau =  forms.MultipleChoiceField(label="Parentes de primeiro grau com :",
+                                                choices=[("Cancer de ovario", "Cancer de ovario"),
+                                                         ("Cancer de mama masculino", "Cancer de mama masculino"),
+                                                         ("Cancer de prostata", "Cancer de prostata"),
+                                                         ("Cancer bilateral de mama", "Cancer bilateral de mama"),
+                                                         ("Cancer de pancreas", "Cancer de pancreas"),],
+                                                widget=forms.CheckboxSelectMultiple,
+    )
     asc_judia =  forms.ChoiceField(label="Ascendencia Judia Ashkenazi:",choices=tupleOpcao)
 
 
