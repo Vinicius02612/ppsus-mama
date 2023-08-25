@@ -54,6 +54,7 @@ def cadastro(request):
         first_name= nome,
         last_name = sobrenome
     )
+  
     user.save()
     messages.success(request, 'Dados cadastrados com sucesso!')
     return redirect('cadastro')
