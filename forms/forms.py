@@ -72,7 +72,7 @@ class Questionario(forms.Form):
     )
     mutacaoGenetica =  forms.ChoiceField(label="Teste genético apresenta mutação do tipo:", choices=tupleMutacao)
     opc_bilateral = forms.ChoiceField(label="Historico Pessoal de cancer de mama bilateral:", choices=tupleOpcao)
-    opc_ovario = forms.ChoiceField(label="Tem historico Pessoal de cançer de ovario?", choices=tupleOpcao)
+    opc_ovario = forms.ChoiceField(label="Tem historico Pessoal de cancer de ovario?", choices=tupleOpcao)
 
     
 
