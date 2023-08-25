@@ -16,20 +16,13 @@
             <thead class="thead-dark">
                 <tr>
                     <td></td>
-                    <td><b>Individual</b></td> 
-                    <td><b>Familia</b></td>
+                    <td><b>Resultado</b></td>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>Risco para mutação de BRCA1</b></td>
-                    <td>00%</td>
-                    <td>00%</td>
-                </tr>
-                <tr>
-                    <td><b>Risco para mutação de BRCA2</b></td>
-                    <td>00%</td>
-                    <td>00%</td>
+                    <td><b>Risco para mutação de BRCA1 e BRCA2.</b></td>
+                    <td>{{pontos}}%</td>
                 </tr>
             </tbody>
         </table>
@@ -40,14 +33,21 @@
 <h2 class="text-center">Sua resposta</h2>
 
 <table class="table">
+        <thead>
             <tr>
-                {{ formTo }} 
+                <th>Pergunta</th>
+                <th>Resposta</th>
             </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {{formTo}}
+            </tr>
+        </tbody>
 </table>
         <br><br><br>
         <div class="row container pl-5">
             <a href="{% url 'forms'%}"><button class="btn btn-lg btn-danger  m-2" type="submit">Voltar</button></a>
             <div class="col-7"></div>
-            <a href="{% url 'dashboard'%}"><button class="btn btn-success ">Ir para Dashboard</button></a>
         </div>
 {%endblock%}

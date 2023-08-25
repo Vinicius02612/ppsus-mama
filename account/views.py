@@ -56,7 +56,7 @@ def cadastro(request):
     )
     user.save()
     messages.success(request, 'Dados cadastrados com sucesso!')
-    return redirect('login')
+    return redirect('cadastro')
 
 
 

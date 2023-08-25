@@ -1,8 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 
-from .models import Formulario
-
+from .models import Pergunta, Formulario
 
 
 class Form(admin.ModelAdmin):
@@ -22,7 +21,6 @@ class Form(admin.ModelAdmin):
         'opc_ovario',
         'tipo_molecular',
         'tam_cancer',
-        'qtd_parent_1',
         'qtd_parent_2',
         'parent_seg_grau',
         'parent_pri_grau',
@@ -30,7 +28,8 @@ class Form(admin.ModelAdmin):
     ]
 
 
-admin.site.register(Formulario, Form)
+admin.site.register(Formulario,Form)
+
 
 """ 
 

@@ -14,3 +14,8 @@ psycopg2-binary==2.9.5
 dj-database-url==1.2.0
 whitenoise==6.2.0
 crispy-bootstrap4==2022.1
+djangorestframework==3.14.0
+importlib-metadata==6.8.0 
+markdown==3.4.4 
+zipp==3.16.2
+django-filter==23.2
