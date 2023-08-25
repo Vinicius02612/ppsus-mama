@@ -45,4 +45,5 @@ class Formulario(models.Model):
 class ModFormsTo(forms.ModelForm):
     class Meta:
         model = Formulario
+        fields = '__all__'
 
