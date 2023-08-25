@@ -73,7 +73,7 @@ def  calcular_predicao(sexo,idade,temcancer,cancer_mama, idade_diagnostico,mutac
     else:
         peso_tipo_molecular = 0
     
-    print(peso_tipo_molecular)
+
     """ Se tem câncer de mama, qual tipo histologico? """
     if cancer_mama == "Carcinoma ductal insitu":
         peso_cancer_mama = 5
@@ -125,6 +125,7 @@ def  calcular_predicao(sexo,idade,temcancer,cancer_mama, idade_diagnostico,mutac
         peso_tam_cancer = 0
 
     pesos_opcoes = {
+        "Câncer de mama":2,
         "Cancer de ovario": 2,
         "Cancer de mama masculino": 2,
         "Cancer de prostata": 2,
