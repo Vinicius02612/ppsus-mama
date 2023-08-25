@@ -88,6 +88,8 @@ class Questionario(forms.Form):
         ("T3", "T3"),
         ("T4", "T4"),
         ("Não tem câncer de mama", "Não tem câncer de mama"),
+        ("Sem informação", "Sem informação"),
+
     )
     tam_cancer = forms.ChoiceField(label="Se tem câncer, qual o tamanho do tumor:",choices=tupleTamanhoDoCancer)
     
