@@ -37,7 +37,6 @@ class Form(admin.ModelAdmin):
         'opc_ovario',
         'tipo_molecular',
         'tam_cancer',
-        'qtd_parent_1',
         'qtd_parent_2',
         'parent_seg_grau',
         'parent_pri_grau',

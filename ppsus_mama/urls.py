@@ -9,7 +9,7 @@ router = routers.DefaultRouter()
 router.register(r'insertForms', FormViewSet.FormViewSet, basename='Formulario')
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('account.urls')),
-    path('forms/', include('forms.urls')),
+    path('', include('forms.urls')),
+    path('account/', include('account.urls')),
     path('api-quest/', include(router.urls))
 ]

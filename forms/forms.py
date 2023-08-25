@@ -96,25 +96,17 @@ class Questionario(forms.Form):
     )
 
     historicoFMasculino =  forms.ChoiceField(label="Histórico familiar de câncer de mama masculino da familia ?", choices=tupleOpcao)
-    qtd_parent_1 = forms.ChoiceField(label="Quantidade parentes de primeiro grau com câncer de mama:",choices=tupleQtdParente)
     qtd_parent_2 = forms.ChoiceField(label=" Quantidade de parentes de primeiro grau com câncer de mama ou ovario com idade  < 50 anos",choices=tupleQtdParente)
     parent_seg_grau =  forms.ChoiceField(label="Quantidade parentes de segundo grau ou mais distante com câncer de mama ou ovario < 50 anos:",choices=tupleQtdParente)
 
 
-    tupleParentePrimeiroGrau= (
-        ("Cancer de ovario", "Cancer de ovario"),
-        ("Cancer de mama masculino", "Cancer de mama masculino"),
-        ("Cancer de prostata", "Cancer de prostata"),
-        ("Cancer bilateral de mama", "Cancer bilateral de mama"),
-        ("Cancer de pancreas", "Cancer de pancreas"),
-        ("Nenhum", "Nenhum"),
-    )
     parent_pri_grau =  forms.MultipleChoiceField(label="Parentes de primeiro grau com :",
                                                 choices=[("Cancer de ovario", "Cancer de ovario"),
                                                          ("Cancer de mama masculino", "Cancer de mama masculino"),
                                                          ("Cancer de prostata", "Cancer de prostata"),
                                                          ("Cancer bilateral de mama", "Cancer bilateral de mama"),
-                                                         ("Cancer de pancreas", "Cancer de pancreas"),],
+                                                         ("Cancer de pancreas", "Cancer de pancreas"),
+                                                         ("Não tem cancer","Não tem cancer")],
                                                 widget=forms.CheckboxSelectMultiple,
     )
     asc_judia =  forms.ChoiceField(label="Ascendencia Judia Ashkenazi:",choices=tupleOpcao)
