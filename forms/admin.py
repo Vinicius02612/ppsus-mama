@@ -21,7 +21,7 @@ class Form(admin.ModelAdmin):
         'opc_ovario',
         'tipo_molecular',
         'tam_cancer',
-        'historicoFMasculino'
+        'historicoFMasculino',
         'qtd_parent_2',
         'parent_seg_grau',
         'parent_pri_grau',
