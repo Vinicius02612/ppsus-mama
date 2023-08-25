@@ -33,7 +33,6 @@ class Formulario(models.Model):
     historicoFMasculino =  models.CharField(max_length=23)
     qtd_parent_2 = models.CharField(max_length=12)
     parent_seg_grau =  models.CharField(max_length=12)
-
     parent_pri_grau =  models.CharField(max_length=25)
     asc_judia =  models.CharField(max_length=12)
 
