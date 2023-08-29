@@ -1,7 +1,7 @@
 def  calcular_predicao(sexo,temcancer,cancer_mama, idade_diagnostico,mutacaoGenetica,opc_bilateral,opc_ovario,tipo_molecular,historicoFMasculino,qtd_parent_2,parent_seg_grau,asc_judia):
     """ Esta função faz o calculo da predição com base nas respostas fornecidas pelo usuário e retora o resultado """
 
-    valor_maximo_pesos = (1 + 5 + 2 +9  + 5 + 5 + 2 + 3  + 3 + 9)
+    valor_maximo_pesos = (1 + 5 + 2 + 4  + 5 + 5 + 2 + 3  + 3 + 4)
     
     print("Peso máximo: ",valor_maximo_pesos)
 
@@ -21,12 +21,12 @@ def  calcular_predicao(sexo,temcancer,cancer_mama, idade_diagnostico,mutacaoGene
 
     """ teste genetico positivo """
     if  mutacaoGenetica =="SIM":
-            valor_de_ponto  += 9
+            valor_de_ponto  += 5
     else:
         valor_de_ponto
     
     if asc_judia == "SIM":
-        valor_de_ponto   += 9
+        valor_de_ponto   += 5
     else:
         valor_de_ponto
 
