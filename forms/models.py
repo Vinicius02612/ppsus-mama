@@ -29,7 +29,6 @@ class Formulario(models.Model):
     opc_bilateral = models.CharField(max_length=100)
     opc_ovario = models.CharField(max_length=100)
     tipo_molecular = models.CharField(max_length=100)
-    tam_cancer = models.CharField(max_length=100)
     historicoFMasculino =  models.CharField(max_length=100)
     qtd_parent_2 = models.CharField(max_length=100)
     parent_seg_grau =  models.CharField(max_length=100)
@@ -58,10 +57,8 @@ class ModFormsTo(forms.ModelForm):
         'opc_bilateral',
         'opc_ovario',
         'tipo_molecular',
-        'tam_cancer',
         'historicoFMasculino',
         'qtd_parent_2',
         'parent_seg_grau',
-        'parent_pri_grau',
         'asc_judia',
         )

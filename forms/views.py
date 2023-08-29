@@ -47,11 +47,9 @@ def forms(request):
         opc_bilateral = formTo.cleaned_data['opc_bilateral'],
         opc_ovario = formTo.cleaned_data['opc_ovario'],
         tipo_molecular = formTo.cleaned_data['tipo_molecular'],
-        tam_cancer = formTo.cleaned_data['tam_cancer'],
         historicoFMasculino = formTo.cleaned_data['historicoFMasculino'],
         qtd_parent_2 = formTo.cleaned_data['qtd_parent_2'],
         parent_seg_grau = formTo.cleaned_data['parent_seg_grau'],
-        parent_pri_grau = formTo.cleaned_data['parent_pri_grau'],
         asc_judia = formTo.cleaned_data['asc_judia'],
     )
     nome = resposta.nomePaciente
@@ -66,23 +64,19 @@ def forms(request):
     opc_bilateral = resposta.opc_bilateral
     opc_ovario = resposta.opc_ovario
     tipo_molecular = resposta.tipo_molecular
-    tam_cancer = resposta.tam_cancer
     historicoFMasculino = resposta.historicoFMasculino
     qtd_parent_2 = resposta.qtd_parent_2
     parent_seg_grau = resposta.parent_seg_grau
-    parent_pri_grau = resposta.parent_pri_grau
     asc_judia = resposta.asc_judia
 
-    pontuacao = calcular_predicao(sexo,idade,temcancer,cancer_mama, idade_diagnostico,mutacaoGenetica,opc_bilateral,opc_ovario,tipo_molecular,tam_cancer,historicoFMasculino,qtd_parent_2,parent_seg_grau,parent_pri_grau,asc_judia)
-    if not nome or not sobrenome or not clinica or  not idade:
+    pontuacao = calcular_predicao(sexo,temcancer, cancer_mama,idade_diagnostico,mutacaoGenetica, opc_bilateral, opc_ovario,tipo_molecular,historicoFMasculino,qtd_parent_2,parent_seg_grau,asc_judia)
+    if not nome or not sobrenome or not clinica:
         nome = "S/N"
         sobrenome = "S/N"
         clinica = "S/N"
-        idade = "S/N"
         resposta.nomePaciente = nome
         resposta.sobrenome = sobrenome
         resposta.nomeclinica = clinica
-        resposta.idadepaciente = idade
         resposta.save()
         messages.success(request, f'Formulario de {request.POST.get("nomePaciente")} salvo com sucesso')
         return render(request, "forms/results.html", {'formTo':formTo, 'pontos':pontuacao})
